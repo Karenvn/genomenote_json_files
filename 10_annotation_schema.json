@@ -35,16 +35,22 @@
                         "busco": {
                             "type": "object",
                             "properties": {
-                                "tool_version": "string",
+                                "tool_version": {
+                                    "type": "string",
+                                    "help": "Version of the BUSCO tool used",
+                                    "required": true
+                                },
                                 "results": {
                                     "type": "array",
                                     "properties": {
                                         "mode": {
                                             "enum": [
                                                 "genome",
-                                                "proteome"
+                                                "proteome",
+                                                "NA"
                                             ],
-                                            "type": "string"
+                                            "type": "string",
+                                            "required": true
                                         },
                                         "lineages": {
                                             "odb_name": "string",
@@ -82,7 +88,11 @@
                         "omark": {
                             "type": "object",
                             "properties": {
-                                "tool_version": "string",
+                                "tool_version": {
+                                    "type": "string",
+                                    "help": "Version of the OMARK tool used",
+                                    "required": true
+                                },
                                 "assessments": {
                                     "type": "array",
                                     "items": {

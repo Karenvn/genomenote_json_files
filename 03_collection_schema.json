@@ -7,20 +7,23 @@
     "properties": {
         "sample_accession": {
             "type": "string",
-            "help": "BioSample accession for the sample used for this workflow role."
+            "help": "BioSample accession for the sample used for this workflow role.",
+            "required": true
         },
         "sample_derived_from": {
             "type": "string",
             "help": "Source individual or parent BioSample accession, where different from sample_accession."
         },
         "tolid": {
-            "type": "string"
+            "type": "string",
+            "recommended": true
         },
         "specimen_id": {
             "type": "string"
         },
         "organism_part": {
-            "type": "string"
+            "type": "string",
+            "required": true
         },
         "preservation_data": {
             "type": "array",
@@ -28,7 +31,8 @@
                 "sample_id": "string",
                 "method": {
                     "type": "string",
-                    "help": "Method of preservation used"
+                    "help": "Method of preservation used",
+                    "required": true
                 },
                 "solution": {
                     "type": "string",
@@ -50,7 +54,8 @@
                 },
                 "lifestage": {
                     "type": "string"
-                }
+                },
+                "required": ["sample_id", "scientific_name", "sex", "lifestage"]
             }
         },
         "collection_data": {
@@ -58,7 +63,7 @@
             "properties": {
                 "museum_voucher_id": {
                     "type": "string",
-                    "help": "Museum Voucher ID"
+                    "help": "Museum Voucher ID, if Not available, NA"
                 },
                 "sample_id": "string",
                 "method": {
@@ -67,7 +72,8 @@
                 },
                 "date": {
                     "type": "string",
-                    "help": "Date of collection"
+                    "help": "Date of collection",
+                    "recommended": true
                 },
                 "location": {
                     "help": "Name of town/city/region",
@@ -78,15 +84,19 @@
                     "type": "string"
                 },
                 "latitude": {
-                    "type": "number"
+                    "type": "number",
+                    "recommended": true
                 },
                 "longitude": {
-                    "type": "number"
+                    "type": "number",
+                    "recommended": true
                 },
                 "elevation": {
                     "type": "number",
-                    "help": "Elevation the sample was collected at, in metres"
-                }
+                    "help": "Elevation the sample was collected at, in metres",
+                    "recommended": true
+                },
+                "required": ["museum_voucher_id", "location", "country", "method"]
             }
         },
         "involved_persons": {
@@ -101,6 +111,7 @@
         "specimen_images": {
             "type": "array",
             "help": "Images of the collected specimen or source individual used in the genome note.",
+            "recommended": true,
             "items": {
                 "type": "object",
                 "properties": {

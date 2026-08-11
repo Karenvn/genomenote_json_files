@@ -19,7 +19,8 @@
                 },
                 "assembly_method_text": {
                     "type": "string",
-                    "help": "Publication-ready or template-generated text describing the assembly method."
+                    "help": "Publication-ready or template-generated text describing the assembly method.",
+                    "required": true
                 },
                 "assembly_software": {
                     "type": "array",

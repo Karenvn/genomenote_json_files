@@ -53,7 +53,8 @@
                                             ]
                                         },
                                         "sample_accession": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "required": true
                                         },
                                         "extraction_protocol": {
                                             "type": "string",
@@ -104,7 +105,8 @@
                                             "type": "string"
                                         },
                                         "tissue_type": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "required": true
                                         },
                                         "tissue_weight_mg": {
                                             "type": "number",

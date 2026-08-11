@@ -34,11 +34,12 @@
                     "uniqueItems": true,
                     "help": "Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section"
                 },
-                "orcid": {
+                "email": {
                     "type": "string"
                 },
                 "corresponding": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": false
                 },
                 "affiliations": {
                     "type": "array",
@@ -46,7 +47,8 @@
                         "type": "string"
                     },
                     "help": "Array of affiliations for each author should be a list of IDs, determined by the affiliation array below"
-                }
+                },
+                "required": ["role", "email", "affiliations"]
             },
             "if": {
                 "anyOf": [
@@ -98,9 +100,24 @@
                     "gal_association": {
                         "type": "string",
                         "help": "GAL association if applicable - Collectors ONLY"
-                    }
-                },
-                "required": ["surname", "given_names"]
+                    },
+                    "gal_hub": {
+                        "type": "string",
+                        "help": "GAL Hub/Institute responsible for the collection",
+                        "recommended": true
+                    },
+                    "orcid": {
+                        "type": "string",
+                        "help": "ORCID of the author/person"
+                    },
+                    "if": {
+                        "role": "collector",
+                        "then": {
+                            "required": ["gal_association"]
+                        }
+                    },
+                    "required": ["surname", "given_names", "orcid"]
+                }
             }
         }
     }
