@@ -7,6 +7,15 @@
             "type": "array",
             "help": "Annotation method performed and output. Ideally link to workflow (doi) and optional free text description",
             "properties": {
+                "involved_persons": {
+                    "type": "array",
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
+                    }
+                },
                 "accession": "string",
                 "data_used": {
                     "type": "array",

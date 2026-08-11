@@ -2,7 +2,8 @@
 """
 Convert JSON schema files to organized TSV files.
 This script processes genomic JSON schema files and outputs them as TSV files
-with a flattened, readable structure.
+with a flattened, readable structure. Handles conditional if/then/else schemas
+and $ref references to external schemas.
 """
 
 import csv
@@ -11,9 +12,72 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 
+def resolve_schema_refs(schema: Dict[str, Any], schema_dir: Path, loaded_schemas: Dict = None) -> Dict[str, Any]:
+    """
+    Recursively resolve all $ref references in a schema.
+
+    Args:
+        schema: The schema object to resolve
+        schema_dir: Directory containing schema files
+        loaded_schemas: Cache of already-loaded schemas
+
+    Returns:
+        The schema with all $refs resolved
+    """
+    if loaded_schemas is None:
+        loaded_schemas = {}
+
+    def resolve_value(value: Any) -> Any:
+        """Recursively resolve $ref in a value."""
+        if isinstance(value, dict):
+            if "$ref" in value:
+                ref = value["$ref"]
+                # Parse reference: "author_schema.json#/$defs/author"
+                if "#" in ref:
+                    file_ref, json_ptr = ref.split("#", 1)
+                else:
+                    file_ref = ref
+                    json_ptr = ""
+
+                # Load referenced file if not cached
+                ref_path = schema_dir / file_ref
+                if str(ref_path) not in loaded_schemas:
+                    try:
+                        with open(ref_path, "r", encoding="utf-8") as f:
+                            loaded_schemas[str(ref_path)] = json.load(f)
+                    except FileNotFoundError:
+                        print(f"Warning: Could not find referenced schema {ref_path}")
+                        return value
+
+                ref_schema = loaded_schemas[str(ref_path)]
+
+                # Navigate JSON pointer
+                if json_ptr:
+                    parts = json_ptr.strip("/").split("/")
+                    for part in parts:
+                        if isinstance(ref_schema, dict) and part in ref_schema:
+                            ref_schema = ref_schema[part]
+                        else:
+                            print(f"Warning: Invalid JSON pointer path {json_ptr}")
+                            return value
+
+                # Return resolved schema (recursive in case it has more $refs)
+                return resolve_value(ref_schema.copy() if isinstance(ref_schema, dict) else ref_schema)
+
+            # Recursively resolve all dict values
+            return {k: resolve_value(v) for k, v in value.items()}
+        elif isinstance(value, list):
+            return [resolve_value(item) for item in value]
+        else:
+            return value
+
+    return resolve_value(schema)
+
+
 def extract_schema_metadata(schema: Dict[str, Any]) -> List[Dict[str, Any]]:
     """
     Extract property metadata from a JSON schema, flattening all properties.
+    Handles if/then/else conditional schemas.
 
     Args:
         schema: The JSON schema object
@@ -60,6 +124,36 @@ def extract_schema_metadata(schema: Dict[str, Any]) -> List[Dict[str, Any]]:
                 if "properties" in items_schema and isinstance(items_schema["properties"], dict):
                     for item_prop_name, item_prop_schema in items_schema["properties"].items():
                         process_property(item_prop_name, item_prop_schema, prop_name)
+
+                # Handle if/then/else conditional schemas
+                if "if" in items_schema and ("then" in items_schema or "else" in items_schema):
+                    # Process "then" branch properties
+                    if "then" in items_schema and isinstance(items_schema["then"], dict):
+                        then_schema = items_schema["then"]
+                        if "properties" in then_schema and isinstance(then_schema["properties"], dict):
+                            then_props = then_schema["properties"]
+                            for then_prop_name, then_prop_schema in then_props.items():
+                                # Check if this property was already processed
+                                already_processed = any(
+                                    r["property_name"] == then_prop_name and r["parent_property"] == prop_name
+                                    for r in rows
+                                )
+                                if not already_processed:
+                                    process_property(then_prop_name, then_prop_schema, prop_name)
+
+                    # Process "else" branch properties
+                    if "else" in items_schema and isinstance(items_schema["else"], dict):
+                        else_schema = items_schema["else"]
+                        if "properties" in else_schema and isinstance(else_schema["properties"], dict):
+                            else_props = else_schema["properties"]
+                            for else_prop_name, else_prop_schema in else_props.items():
+                                # Check if this property was already processed
+                                already_processed = any(
+                                    r["property_name"] == else_prop_name and r["parent_property"] == prop_name
+                                    for r in rows
+                                )
+                                if not already_processed:
+                                    process_property(else_prop_name, else_prop_schema, prop_name)
 
     # Process all top-level properties
     for prop_name, prop_schema in properties.items():
@@ -121,6 +215,9 @@ def process_json_files(input_dir: Path, output_dir: Path) -> None:
         try:
             with open(json_file, "r", encoding="utf-8") as f:
                 schema = json.load(f)
+
+            # Resolve all $ref references
+            schema = resolve_schema_refs(schema, input_dir)
 
             # Extract metadata
             rows = extract_schema_metadata(schema)

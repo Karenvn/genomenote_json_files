@@ -9,6 +9,15 @@
             "type": "object",
             "help": "Methods used to sequence genomic material.",
             "properties": {
+                "involved_persons": {
+                    "type": "array",
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
+                    }
+                },
                 "sample_processing": {
                     "type": "array",
                     "help": "Details of sequencing methods/protocols.",

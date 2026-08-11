@@ -75,65 +75,11 @@
                 "authors": {
                     "type": "array",
                     "source": [
-                        "AuthorsDB"
+                        "AuthorsDB",
+                        "AllJson"
                     ],
                     "items": {
-                        "type": "object",
-                        "properties": {
-                            "authorsdb_id": {
-                                "type": "string",
-                                "help": "ID from AuthorsDB"
-                            },
-                            "surname": {
-                                "type": "string",
-                                "help": "Family name of the author"
-                            },
-                            "middle_names": {
-                                "type": "string",
-                                "help": "Middle names of the author"
-                            },
-                            "given_names": {
-                                "type": "string",
-                                "help": "Given names of the author (First name)"
-                            },
-                            "gal_association": {
-                                "type": "string",
-                                "help": "GAL association if applicable - Collectors ONLY"
-                            },
-                            "role": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string",
-                                    "enum": [
-                                        "assembler",
-                                        "curator",
-                                        "data_generator",
-                                        "annotation",
-                                        "collection",
-                                        "extraction",
-                                        "sequencing",
-                                        "researcher",
-                                        "other"
-                                    ]
-                                },
-                                "minItems": 1,
-                                "uniqueItems": true,
-                                "help": "Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section"
-                            },
-                            "orcid": {
-                                "type": "string"
-                            },
-                            "corresponding": {
-                                "type": "boolean"
-                            },
-                            "affiliations": {
-                                "type": "array",
-                                "items": {
-                                    "type": "string"
-                                },
-                                "help": "Array of affiliations for each author should be a list of IDs, determined by the affiliation array below"
-                            }
-                        }
+                        "$ref": "_author_schema.json#/$defs/author"
                     }
                 },
                 "affiliations": {

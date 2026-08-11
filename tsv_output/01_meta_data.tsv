@@ -17,14 +17,15 @@ title	parent_projects	string			No
 formatted_parent_projects	metadata	string	Publication-ready parent project string derived from parent_projects by data_note. Describes, e.g. Project Psyche.		No
 authors	metadata	array			No
 authorsdb_id	authors	string	ID from AuthorsDB		No
-surname	authors	string	Family name of the author		No
-middle_names	authors	string	Middle names of the author		No
-given_names	authors	string	Given names of the author (First name)		No
-gal_association	authors	string	GAL association if applicable - Collectors ONLY		No
 role	authors	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section		No
 orcid	authors	string			No
 corresponding	authors	boolean			No
 affiliations	authors	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below		No
+name	authors	string	Name of the consortia		No
+surname	authors	string	Family name of the author		No
+middle_names	authors	string	Middle names of the author		No
+given_names	authors	string	Given names of the author (First name)		No
+gal_association	authors	string	GAL association if applicable - Collectors ONLY		No
 affiliations	metadata	array			No
 id	affiliations	string			No
 affiliation	affiliations	string			No

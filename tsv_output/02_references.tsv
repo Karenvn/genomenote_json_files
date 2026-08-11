@@ -20,3 +20,6 @@ surname	authors	string			No
 middle_names	authors	string			No
 given_names	authors	string			No
 formatted_bibtex	references	string	Formatted BibTeX entry for the reference		No
+data_accession	references	object	Field for the source of genome reference data if applicable		No
+source	data_accession		Source of genome reference data		No
+accession	data_accession	string	Accession number of the genome reference data		No

@@ -10,11 +10,11 @@
             "properties": {
                 "involved_persons": {
                     "type": "array",
-                    "properties": {
-                        "id": {
-                            "type": "string",
-                            "help": "ID from author list of those who assembled the genome(s)"
-                        }
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
                     }
                 },
                 "assembly_method_text": {

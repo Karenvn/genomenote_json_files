@@ -10,6 +10,15 @@
         "analysis": {
             "type": "array",
             "properties": {
+                "involved_persons": {
+                    "type": "array",
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
+                    }
+                },
                 "sample_id": {
                     "type": "string",
                     "help": "Links to HAP_KEY, e.g. Haplotype_1, Primary, etc."

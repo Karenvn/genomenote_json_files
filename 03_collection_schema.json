@@ -91,15 +91,11 @@
         },
         "involved_persons": {
             "type": "array",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "help": "Name of the collector/identifier of sample"
-                },
-                "ID": {
-                    "type": "string",
-                    "help": "Identifier from the author list"
-                }
+            "source": [
+                "AuthorsDB"
+            ],
+            "items": {
+                "$ref": "_author_schema.json#/$defs/author"
             }
         },
         "specimen_images": {

@@ -7,11 +7,11 @@
             "properties": {
                 "involved_persons": {
                     "type": "array",
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "help": "Name of assembler, should be taken from the author list defined in the metadata NB: Should probably be replaced by an ID"
-                        }
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
                     }
                 },
                 "extra-numerary-chromosomes": {

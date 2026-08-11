@@ -9,6 +9,15 @@
             "type": "object",
             "help": "Methods used to extract genomic material from provided samples. These are kept as separate subsections because they are populated from different workflow sources.",
             "properties": {
+                "involved_persons": {
+                    "type": "array",
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
+                    }
+                },
                 "sample_processing": {
                     "type": "array",
                     "help": "Details of extraction methods/protocols.",

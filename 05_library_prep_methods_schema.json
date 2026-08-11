@@ -9,6 +9,15 @@
             "type": "object",
             "help": "Methods used to prepare a genomic library for sequencing. These are kept as separate subsections because they are populated from different workflow sources.",
             "properties": {
+                "involved_persons": {
+                    "type": "array",
+                    "source": [
+                        "AuthorsDB"
+                    ],
+                    "items": {
+                        "$ref": "_author_schema.json#/$defs/author"
+                    }
+                },
                 "library_prep": {
                     "type": "array",
                     "help": "Details of library preparation methods/protocols.",
