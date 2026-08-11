@@ -1,0 +1,74 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema#",
+    "type": "object",
+    "title": "Protocol Schema",
+    "description": "Reusable tool/software/workflow/pipeline/protocol schema",
+    "$defs": {
+        "tool": {
+            "type": "object",
+            "properties": {
+                "tool_id": {
+                    "type": "string",
+                    "help": "Link to the reference ID of the tool - citation_key of references_schema.json"
+                },
+                "type": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "software",
+                            "tool",
+                            "pipeline",
+                            "workflow",
+                            "protocol",
+                            "other"
+                        ]
+                    },
+                    "help": ""
+                },
+                "role": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "collection",
+                            "extraction",
+                            "library_preparation",
+                            "sequencing",
+                            "assembly",
+                            "assembly-genomic",
+                            "assembly-metagenomic",
+                            "assembly-organellar",
+                            "decontamination",
+                            "curation",
+                            "annotation",
+                            "gap-analysis",
+                            "genomenote",
+                            "research"
+                        ]
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "help": "Version of the tool/software"
+                },
+                "source": {
+                    "type": "string",
+                    "help": "Source of the tool/software"
+                },
+                "doi": {
+                    "type": "string",
+                    "help": "DOI of the tool/software"
+                },
+                "parameters": {
+                    "type": "string",
+                    "help": "Any specific parameters for the tool/software used for this analysis"
+                },
+                "notes": {
+                    "type": "string",
+                    "help": "Any notes or comments about the tool/software used for this analysis"
+                }
+            }
+        }
+    }
+}

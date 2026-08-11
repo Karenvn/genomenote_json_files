@@ -81,6 +81,10 @@
                                     "other"
                                 ]
                             },
+                            "circularised": {
+                                "type": "boolean",
+                                "help": "Whether the organelle was circularised during assembly"
+                            },
                             "assembler": {
                                 "type": "object",
                                 "properties": {
@@ -125,37 +129,53 @@
                             "help": "This should be Primary, Alternate OR Primary followed by Haplotype_{int}. This should act as a key where noted HAP_KEY"
                         },
                         "assembly_accession": {
-                            "type": "string"
+                            "type": "string",
+                            "help": "INSDC Accession",
+                            "required": true
                         },
                         "assembly_id": {
                             "type": "string"
                         },
                         "no_of_contigs": {
-                            "type": "integer"
+                            "type": "integer",
+                            "minimum": 1,
+                            "help": "Number of contigs in assembly",
+                            "required": true
                         },
                         "contig_n50_length": {
-                            "type": "number"
+                            "type": "integer",
+                            "minimum": 1,
+                            "help": "N50 length of contigs in assembly",
+                            "required": true
                         },
                         "no_of_scaffolds": {
-                            "type": "integer"
+                            "type": "integer",
+                            "minimum": 1,
+                            "help": "Number of scaffolds in assembly",
+                            "required": true
                         },
                         "scaffold_n50_length": {
-                            "type": "number"
+                            "type": "integer",
+                            "minimum": 1,
+                            "help": "N50 length of scaffolds in assembly",
+                            "required": true
                         },
                         "longest_scaffold_length": {
-                            "type": "number"
+                            "type": "integer",
+                            "minimum": 1,
+                            "help": "Length of longest scaffold in assembly"
                         },
                         "genome_size": {
-                            "type": "number"
+                            "type": "number",
+                            "minimum": 1,
+                            "help": "Length of assembly in bp",
+                            "required": true
                         },
                         "percent_assembled": {
-                            "type": "array",
-                            "properties": {
-                                "haplotype": "string",
-                                "minimum": 0,
-                                "maximum": 100,
-                                "help": "Percentage of the assembly assigned to chromosomes. 1 item per haplotype in the array. HAP_KEY"
-                            }
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100,
+                            "help": "Percentage of the assembly assigned to chromosomes. 1 item per haplotype in the array. HAP_KEY"
                         }
                     },
                     "organelles": {
