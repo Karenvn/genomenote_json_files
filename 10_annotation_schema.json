@@ -46,7 +46,7 @@
                                         "mode": {
                                             "enum": [
                                                 "genome",
-                                                "proteome",
+                                                "transcriptome",
                                                 "NA"
                                             ],
                                             "type": "string",
