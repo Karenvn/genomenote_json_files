@@ -80,13 +80,13 @@
                     "sample_id": {
                         "type": "string"
                     },
-                    "method": {
+                    "preservation_method": {
                         "type": "string",
-                        "help": "Method of preservation used"
+                        "help": "How the sample was preserved, for example snap frozen, on dry ice, in ethanol, lyophilised or air dried."
                     },
-                    "solution": {
+                    "preservative_solution": {
                         "type": "string",
-                        "help": "Storage solution"
+                        "help": "Solution used to preserve the sample, for example RNAlater, RLT buffer or DESS."
                     }
                 }
             }
@@ -127,13 +127,14 @@
                     "sample_id": {
                         "type": "string"
                     },
-                    "method": {
+                    "collection_method": {
                         "type": "string",
-                        "help": "How was the sample collected"
+                        "help": "How the sample was collected, for example using a light trap, hand net or naturalist dredge."
                     },
-                    "date": {
+                    "collection_date": {
                         "type": "string",
-                        "help": "Date of collection"
+                        "format": "date",
+                        "help": "Date on which the sample was collected, in YYYY-MM-DD format."
                     },
                     "geographic_location": {
                         "type": "string",
@@ -141,10 +142,16 @@
                         "help": "Geographic location where the sample was collected, using an INSDC country or sea name, optionally followed by region and locality, for example 'United Kingdom: Berkshire, Wytham Woods'."
                     },
                     "latitude": {
-                        "type": "number"
+                        "type": "number",
+                        "minimum": -90,
+                        "maximum": 90,
+                        "help": "Latitude of the collection location in decimal degrees (DD); 3 to 8 decimal places are recommended."
                     },
                     "longitude": {
-                        "type": "number"
+                        "type": "number",
+                        "minimum": -180,
+                        "maximum": 180,
+                        "help": "Longitude of the collection location in decimal degrees (DD); 3 to 8 decimal places are recommended."
                     },
                     "elevation": {
                         "type": "number",
