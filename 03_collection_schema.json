@@ -22,83 +22,150 @@
         "organism_part": {
             "type": "string"
         },
+        "flow_cytometry": {
+            "type": "object",
+            "help": "Direct genome-size estimate obtained by flow cytometry for this sample, together with the method used.",
+            "properties": {
+                "method": {
+                    "type": "object",
+                    "properties": {
+                        "buffer": {
+                            "type": "string",
+                            "minLength": 1,
+                            "help": "Buffer used to isolate nuclei for the flow cytometry measurement."
+                        },
+                        "standard": {
+                            "type": "string",
+                            "minLength": 1,
+                            "help": "Internal calibration standard used for the flow cytometry measurement, including its assumed genome size where available."
+                        }
+                    },
+                    "required": [
+                        "buffer",
+                        "standard"
+                    ]
+                },
+                "one_c_value_pg": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "help": "Measured 1C nuclear DNA content in picograms."
+                },
+                "genome_size_estimate_mb": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "help": "Equivalent 1C genome size estimate in megabases."
+                }
+            },
+            "required": [
+                "method"
+            ],
+            "anyOf": [
+                {
+                    "required": [
+                        "one_c_value_pg"
+                    ]
+                },
+                {
+                    "required": [
+                        "genome_size_estimate_mb"
+                    ]
+                }
+            ]
+        },
         "preservation_data": {
             "type": "array",
-            "properties": {
-                "sample_id": "string",
-                "method": {
-                    "type": "string",
-                    "help": "Method of preservation used"
-                },
-                "solution": {
-                    "type": "string",
-                    "help": "Storage solution"
+            "items": {
+                "type": "object",
+                "properties": {
+                    "sample_id": {
+                        "type": "string"
+                    },
+                    "method": {
+                        "type": "string",
+                        "help": "Method of preservation used"
+                    },
+                    "solution": {
+                        "type": "string",
+                        "help": "Storage solution"
+                    }
                 }
             }
         },
         "identification_data": {
             "type": "array",
-            "properties": {
-                "sample_id": "string",
-                "scientific_name": "string",
-                "method": {
-                    "type": "string",
-                    "help": "How was the organism identified?"
-                },
-                "sex": {
-                    "type": "string"
-                },
-                "lifestage": {
-                    "type": "string"
+            "items": {
+                "type": "object",
+                "properties": {
+                    "sample_id": {
+                        "type": "string"
+                    },
+                    "scientific_name": {
+                        "type": "string"
+                    },
+                    "method": {
+                        "type": "string",
+                        "help": "How was the organism identified?"
+                    },
+                    "sex": {
+                        "type": "string"
+                    },
+                    "lifestage": {
+                        "type": "string"
+                    }
                 }
             }
         },
         "collection_data": {
             "type": "array",
-            "properties": {
-                "museum_voucher_id": {
-                    "type": "string",
-                    "help": "Museum Voucher ID"
-                },
-                "sample_id": "string",
-                "method": {
-                    "type": "string",
-                    "help": "How was the sample collected"
-                },
-                "date": {
-                    "type": "string",
-                    "help": "Date of collection"
-                },
-                "location": {
-                    "help": "Name of town/city/region",
-                    "type": "string"
-                },
-                "country": {
-                    "help": "Country of Origin",
-                    "type": "string"
-                },
-                "latitude": {
-                    "type": "number"
-                },
-                "longitude": {
-                    "type": "number"
-                },
-                "elevation": {
-                    "type": "number",
-                    "help": "Elevation the sample was collected at, in metres"
+            "items": {
+                "type": "object",
+                "properties": {
+                    "museum_voucher_id": {
+                        "type": "string",
+                        "help": "Museum Voucher ID"
+                    },
+                    "sample_id": {
+                        "type": "string"
+                    },
+                    "method": {
+                        "type": "string",
+                        "help": "How was the sample collected"
+                    },
+                    "date": {
+                        "type": "string",
+                        "help": "Date of collection"
+                    },
+                    "geographic_location": {
+                        "type": "string",
+                        "minLength": 1,
+                        "help": "Geographic location where the sample was collected, using an INSDC country or sea name, optionally followed by region and locality, for example 'United Kingdom: Berkshire, Wytham Woods'."
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    },
+                    "elevation": {
+                        "type": "number",
+                        "help": "Elevation the sample was collected at, in metres"
+                    }
                 }
             }
         },
         "involved_persons": {
             "type": "array",
-            "properties": {
-                "name": {
-                    "type": "string",
-                    "help": "Name of the collector/identifier of sample"
-                },
-                "ID": {
-                    "type": "string",
-                    "help": "Identifier from the author list"
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "help": "Name of the collector/identifier of sample"
+                    },
+                    "ID": {
+                        "type": "string",
+                        "help": "Identifier from the author list"
+                    }
                 }
             }
         },
