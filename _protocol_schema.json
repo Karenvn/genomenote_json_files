@@ -42,7 +42,7 @@
                             "decontamination",
                             "curation",
                             "annotation",
-                            "gap-analysis",
+                            "analysis",
                             "genomenote",
                             "research"
                         ]
@@ -50,7 +50,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "help": "Version of the tool/software"
+                    "help": "Version of the protocol/workflow/tool/software"
                 },
                 "source": {
                     "type": "string",
