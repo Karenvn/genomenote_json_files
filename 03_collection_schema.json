@@ -32,7 +32,7 @@
                 "method": {
                     "type": "string",
                     "help": "Method of preservation used",
-                    "required": true
+                    "recomended": true
                 },
                 "solution": {
                     "type": "string",
