@@ -2,7 +2,7 @@ property_name	parent_property	path	type	description	enum	pattern	required	recomm
 analysis		analysis	array				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 involved_persons	analysis	analysis.involved_persons	array				No	No	AuthorsDB	
 authorsdb_id	involved_persons	analysis.involved_persons.authorsdb_id	string	ID from AuthorsDB			No	No	AuthorsDB	
-role	involved_persons	analysis.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section			Yes	No	AuthorsDB	
+role	involved_persons	analysis.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section	analysis_runner, assembler, curator, consortia, contributing_group, data_generator, annotation, collection, preserver, extraction, sequencing, researcher, other		Yes	No	AuthorsDB	
 email	involved_persons	analysis.involved_persons.email	string				Yes	No	AuthorsDB	
 corresponding	involved_persons	analysis.involved_persons.corresponding	boolean				No	No	AuthorsDB	
 affiliations	involved_persons	analysis.involved_persons.affiliations	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below			Yes	No	AuthorsDB	
@@ -15,15 +15,15 @@ gal_hub	involved_persons	analysis.involved_persons.gal_hub	string	GAL Hub/Instit
 orcid	involved_persons	analysis.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
 analysis_software	analysis	analysis.analysis_software	array	Software/Pipelines used for the analysis of the assembly set. Should be listed in the references.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 protocol_id	analysis_software	analysis.analysis_software.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-type	analysis_software	analysis.analysis_software.type	array	Type of Protocol			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-role	analysis_software	analysis.analysis_software.role	array				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+type	analysis_software	analysis.analysis_software.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+role	analysis_software	analysis.analysis_software.role	array		collection, extraction, library_preparation, sequencing, assembly, decontamination, curation, annotation, analysis, genomenote, research		No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 version	analysis_software	analysis.analysis_software.version	string	Version of the protocol/workflow/tool/software			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 source	analysis_software	analysis.analysis_software.source	string	Source of the Protocol			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 doi	analysis_software	analysis.analysis_software.doi	string	DOI of the Protocol			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 parameters	analysis_software	analysis.analysis_software.parameters	string	Any specific parameters for the Protocol			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 notes	analysis_software	analysis.analysis_software.notes	string	Any notes or comments about the Protocol			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 sample_id	analysis	analysis.sample_id	string	Links to HAP_KEY, e.g. Haplotype_1, Primary, etc.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-assembly_role	analysis	analysis.assembly_role		Links to HAP_KEY, e.g. Haplotype_1			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+assembly_role	analysis	analysis.assembly_role	object	Links to HAP_KEY, e.g. Haplotype_1			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 assembly	assembly_role	analysis.assembly_role.assembly	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 ebp_statistics	analysis	analysis.ebp_statistics	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 ebp_metric	ebp_statistics	analysis.ebp_statistics.ebp_metric	string	Derived EBP summary metric for the assembly used in the Genome Note table, for example 6.C.Q40.		^[0-9?]+\.[0-9C?]+\.Q[0-9?]+$	No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
@@ -37,26 +37,53 @@ ebp_contig_n50_benchmark_mb	ebp_statistics	analysis.ebp_statistics.ebp_contig_n5
 ebp_contig_n50_benchmark_label	ebp_statistics	analysis.ebp_statistics.ebp_contig_n50_benchmark_label	string	Display label for the contig N50 benchmark, for example >= 1 Mb.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 ebp_perc_assembled_benchmark	ebp_statistics	analysis.ebp_statistics.ebp_perc_assembled_benchmark	number	Percentage assigned to chromosomes required by the selected EBP reference standard.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 ebp_qv_benchmark	ebp_statistics	analysis.ebp_statistics.ebp_qv_benchmark	number	QV required by the selected EBP reference standard.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-GAP_analysis_data	analysis	analysis.GAP_analysis_data					No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+GAP_analysis_data	analysis	analysis.GAP_analysis_data	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+readmapping	GAP_analysis_data	analysis.GAP_analysis_data.readmapping	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	readmapping	analysis.GAP_analysis_data.readmapping.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+datablob_id	readmapping	analysis.GAP_analysis_data.readmapping.datablob_id	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+aligned_reads	readmapping	analysis.GAP_analysis_data.readmapping.aligned_reads	array				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+accession	aligned_reads	analysis.GAP_analysis_data.readmapping.aligned_reads.accession	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+data_type	aligned_reads	analysis.GAP_analysis_data.readmapping.aligned_reads.data_type	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+file_path	aligned_reads	analysis.GAP_analysis_data.readmapping.aligned_reads.file_path	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+weblink	aligned_reads	analysis.GAP_analysis_data.readmapping.aligned_reads.weblink	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 sequence_composition	GAP_analysis_data	analysis.GAP_analysis_data.sequence_composition	array	K-mer based sequence composition track of each asssembly role			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-worfklow	sequence_composition	analysis.GAP_analysis_data.sequence_composition.worfklow	id				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	sequence_composition	analysis.GAP_analysis_data.sequence_composition.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 accession	sequence_composition	analysis.GAP_analysis_data.sequence_composition.accession	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 file_path	sequence_composition	analysis.GAP_analysis_data.sequence_composition.file_path	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 weblink	sequence_composition	analysis.GAP_analysis_data.sequence_composition.weblink	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 blobtoolkit	GAP_analysis_data	analysis.GAP_analysis_data.blobtoolkit	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+doi	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.doi	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 snail_plot	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.snail_plot	string	Publication figure asset for the BlobToolKit snail plot, usually generated for hap1 or the primary assembly.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 blob_plot	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.blob_plot	string	Publication figure asset for the BlobToolKit blob plot, usually generated for hap1 or the primary assembly.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 snail_plot_url	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.snail_plot_url	string	BlobToolKit viewer URL for the snail plot, included in the genome note text.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 blob_plot_url	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.blob_plot_url	string	BlobToolKit viewer URL for the blob plot, included in the genome note text.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-worfklow	blobtoolkit	analysis.GAP_analysis_data.blobtoolkit.worfklow	id				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+ancestral_linkage_group	GAP_analysis_data	analysis.GAP_analysis_data.ancestral_linkage_group	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	ancestral_linkage_group	analysis.GAP_analysis_data.ancestral_linkage_group.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+assembly_id	ancestral_linkage_group	analysis.GAP_analysis_data.ancestral_linkage_group.assembly_id	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+lineage_odb	ancestral_linkage_group	analysis.GAP_analysis_data.ancestral_linkage_group.lineage_odb	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+ancestral_linkage_tsv	ancestral_linkage_group	analysis.GAP_analysis_data.ancestral_linkage_group.ancestral_linkage_tsv	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+ancestral_linkage_plot	ancestral_linkage_group	analysis.GAP_analysis_data.ancestral_linkage_group.ancestral_linkage_plot	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+pretext	GAP_analysis_data	analysis.GAP_analysis_data.pretext	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	pretext	analysis.GAP_analysis_data.pretext.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+assembly_id	pretext	analysis.GAP_analysis_data.pretext.assembly_id	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+haplotype	pretext	analysis.GAP_analysis_data.pretext.haplotype	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+file_path	pretext	analysis.GAP_analysis_data.pretext.file_path	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+weblink	pretext	analysis.GAP_analysis_data.pretext.weblink	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+higlass	GAP_analysis_data	analysis.GAP_analysis_data.higlass	object				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	higlass	analysis.GAP_analysis_data.higlass.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+assembly_id	higlass	analysis.GAP_analysis_data.higlass.assembly_id	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+haplotype	higlass	analysis.GAP_analysis_data.higlass.haplotype	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+mcool_file	higlass	analysis.GAP_analysis_data.higlass.mcool_file	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+weblink	higlass	analysis.GAP_analysis_data.higlass.weblink	string				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 merqury	GAP_analysis_data	analysis.GAP_analysis_data.merqury	array	Merqury consensus quality and k-mer completeness values reported for each assembly role.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-worfklow	merqury	analysis.GAP_analysis_data.merqury.worfklow	id				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	merqury	analysis.GAP_analysis_data.merqury.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 qv	merqury	analysis.GAP_analysis_data.merqury.qv	number	Merqury consensus quality value.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 kmer_completeness_percent	merqury	analysis.GAP_analysis_data.merqury.kmer_completeness_percent	number	Merqury k-mer completeness percentage.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 kmer_length	merqury	analysis.GAP_analysis_data.merqury.kmer_length	integer	Length of the k-mer used for analysis.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 spectra_plot	merqury	analysis.GAP_analysis_data.merqury.spectra_plot	string	Optional publication figure or asset for the Merqury spectra plot.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 busco	GAP_analysis_data	analysis.GAP_analysis_data.busco	array	BUSCO completeness results.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
-worfklow	busco	analysis.GAP_analysis_data.busco.worfklow	id				No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
+workflow	busco	analysis.GAP_analysis_data.busco.workflow	string	Identifier of the workflow used to generate this analysis result.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 lineage	busco	analysis.GAP_analysis_data.busco.lineage	string	BUSCO lineage dataset, for example lepidoptera_odb10.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 complete_percent	busco	analysis.GAP_analysis_data.busco.complete_percent	number	Percentage of complete BUSCOs.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 single_percent	busco	analysis.GAP_analysis_data.busco.single_percent	number	Percentage of single-copy complete BUSCOs.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	

@@ -7,22 +7,17 @@
             "source": [
                 "bibtex"
             ],
-            "uniqueItemProperties": [
-                "citation_key",
-                "title"
-            ],
+            "$comment": "Citation-key uniqueness is checked by the document integrity validator, because JSON Schema draft 2020-12 does not define uniqueItemProperties. Titles are not identifiers.",
             "help": "References in bibtex format - inpired by https://github.com/brianrabern/bib2json/blob/main/README.md",
             "items": {
                 "type": "object",
                 "required": [
                     "title",
                     "citation_key",
-                    "publication_type",
                     "authors",
-                    "entry_type",
-                    "accession",
-                    "accession_type"
+                    "entry_type"
                 ],
+                "$comment": "The obsolete required names publication_type, accession and accession_type have been removed. entry_type describes the publication type; identifier holds a bibliographic identifier when available; dataset entries use data_accession. No identifier is invented or newly required for other entry types.",
                 "properties": {
                     "title": {
                         "type": "string",
@@ -99,8 +94,8 @@
                                         "const": "ISBN"
                                     },
                                     "value": {
-                                        "help": "ISBN (13) code example is: 978-3-16-148410-0, ISBN (10) code example is: 3-16-148410-0",
-                                        "pattern": "NEED A PATTERN HERE TO VALIDATE"
+                                        "help": "Bare ISBN-10 or ISBN-13, optionally separated by single hyphens or spaces. ISBN-10 permits a final X or x; ISBN-13 starts with 978 or 979. Examples: 3-16-148410-0 and 978-3-16-148410-0. This checks basic format only, not the checksum or registered hyphenation groups.",
+                                        "pattern": "^(?:[0-9](?:[- ]?[0-9]){8}[- ]?[0-9Xx]|9[- ]?7[- ]?[89](?:[- ]?[0-9]){10})$"
                                     }
                                 }
                             },

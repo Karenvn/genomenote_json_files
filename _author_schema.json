@@ -24,6 +24,7 @@
                             "data_generator",
                             "annotation",
                             "collection",
+                            "preserver",
                             "extraction",
                             "sequencing",
                             "researcher",
@@ -127,7 +128,7 @@
                         "role": {
                             "type": "array",
                             "contains": {
-                                "const": "collector"
+                                "const": "collection"
                             }
                         }
                     }

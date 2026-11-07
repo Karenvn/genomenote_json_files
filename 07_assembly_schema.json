@@ -78,18 +78,29 @@
                             "assembler": {
                                 "type": "object",
                                 "properties": {
-                                    "name": "string",
-                                    "ID": "string"
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "ID": {
+                                        "type": "string"
+                                    }
                                 },
                                 "help": "Tool or workflow used for organelle assembly, for example MitoHiFi or Oatk. Should be a link to an object in the reference list"
                             },
                             "comparator": {
                                 "type": "array",
-                                "properties": {
-                                    "name": "string",
-                                    "accession": "string"
-                                },
-                                "help": "Comparator species, assembly or reference used for organelle assembly, where applicable."
+                                "help": "Comparator species, assembly or reference used for organelle assembly, where applicable.",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "accession": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
                             },
                             "decision_notes": {
                                 "type": "string",
@@ -105,234 +116,262 @@
         },
         "assembly_stats": {
             "type": "array",
-            "properties": {
-                "assembly_information": {
-                    "type": "object",
-                    "properties": {
-                        "id": "string",
-                        "assembly_level": {
-                            "enum": [
-                                "contig",
-                                "scaffold",
-                                "chromosome"
-                            ]
-                        },
-                        "accession_haplotype": {
-                            "type": "string",
-                            "help": "This should be Primary, Alternate OR Primary followed by Haplotype_{int}. This should act as a key where noted HAP_KEY"
-                        },
-                        "assembly_accession": {
-                            "type": "string",
-                            "help": "INSDC Accession"
-                        },
-                        "assembly_id": {
-                            "type": "string"
-                        },
-                        "no_of_contigs": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "help": "Number of contigs in assembly"
-                        },
-                        "contig_n50_length": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "help": "N50 length of contigs in assembly"
-                        },
-                        "no_of_scaffolds": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "help": "Number of scaffolds in assembly"
-                        },
-                        "scaffold_n50_length": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "help": "N50 length of scaffolds in assembly"
-                        },
-                        "longest_scaffold_length": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "help": "Length of longest scaffold in assembly"
-                        },
-                        "genome_size": {
-                            "type": "number",
-                            "minimum": 1,
-                            "help": "Length of assembly in bp"
-                        },
-                        "percent_assembled": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 100,
-                            "help": "Percentage of the assembly assigned to chromosomes. 1 item per haplotype in the array. HAP_KEY"
-                        }
-                    },
-                    "required": [
-                        "assembly_accession",
-                        "no_of_contigs",
-                        "contig_n50_length",
-                        "no_of_scaffolds",
-                        "scaffold_n50_length",
-                        "genome_size"
-                    ],
-                    "organelles": {
-                        "type": "array",
-                        "help": "Organelle sequences included in the assembly, such as mitochondrial and plastid genomes.",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "assembly_role": {
-                                    "type": "string",
-                                    "help": "Assembly role containing this organelle record. HAP_KEY"
-                                },
-                                "organelle_type": {
-                                    "enum": [
-                                        "mitochondrion",
-                                        "plastid",
-                                        "chloroplast"
-                                    ]
-                                },
-                                "accession": {
-                                    "type": "string"
-                                },
-                                "name": {
-                                    "type": "string",
-                                    "help": "Molecule name, for example MT or PLTD."
-                                },
-                                "description": {
-                                    "type": "string"
-                                },
-                                "length_kb": {
-                                    "type": "number",
-                                    "minimum": 0
-                                },
-                                "gc_percent": {
-                                    "type": "number",
-                                    "minimum": 0,
-                                    "maximum": 100
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "assembly_analysis": {
+            "items": {
                 "type": "object",
                 "properties": {
-                    "ncbi_taxonomy_id": {
-                        "type": "string",
-                        "minLength": 1
-                    },
-                    "ploidy": {
-                        "method": {
-                            "type": "object",
-                            "properties": {
-                                "software": "string",
-                                "doi": "string",
-                                "url": "string"
-                            }
-                        },
-                        "count": {
-                            "type": "number",
-                            "help": "Ploidy count"
-                        },
-                        "formatted_count": {
-                            "type": "string",
-                            "help": "Whether the count equates to diploid, triploid, etc."
-                        }
-                    },
-                    "kmer_analysis": {
-                        "type": "array",
+                    "assembly_information": {
+                        "type": "object",
                         "properties": {
-                            "name": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "assembly_level": {
                                 "enum": [
-                                    "genomescope",
-                                    "smudgeplot"
+                                    "contig",
+                                    "scaffold",
+                                    "chromosome"
                                 ]
                             },
-                            "path": {
+                            "accession_haplotype": {
                                 "type": "string",
-                                "help": "Path to directory containing results"
+                                "help": "This should be Primary, Alternate OR Primary followed by Haplotype_{int}. This should act as a key where noted HAP_KEY"
                             },
-                            "est_size_bp": {
+                            "assembly_accession": {
+                                "type": "string",
+                                "help": "INSDC Accession"
+                            },
+                            "assembly_id": {
+                                "type": "string"
+                            },
+                            "no_of_contigs": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "help": "Number of contigs in assembly"
+                            },
+                            "contig_n50_length": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "help": "N50 length of contigs in assembly"
+                            },
+                            "no_of_scaffolds": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "help": "Number of scaffolds in assembly"
+                            },
+                            "scaffold_n50_length": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "help": "N50 length of scaffolds in assembly"
+                            },
+                            "longest_scaffold_length": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "help": "Length of longest scaffold in assembly"
+                            },
+                            "genome_size": {
+                                "type": "number",
+                                "minimum": 1,
+                                "help": "Length of assembly in bp"
+                            },
+                            "percent_assembled": {
                                 "type": "number",
                                 "minimum": 0,
-                                "help": "Estimated length of assembly from analysis, recorded in base-pairs"
-                            }
-                        }
-                    },
-                    "raw_data_object": {
-                        "type": "array",
-                        "help": "Linked to raw_data in sample_prep_schema",
-                        "properties": {
-                            "accession": "string",
-                            "data_type": "string"
-                        }
-                    },
-                    "chromosome_tables": {
-                        "help": "Chromosomal pseudomolecules",
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "insdc_accession": {
-                                    "type": "string"
-                                },
-                                "chromosome": {
-                                    "type": "string"
-                                },
-                                "size_mb": {
-                                    "type": "number"
-                                },
-                                "gc_percent": {
-                                    "type": "number"
+                                "maximum": 100,
+                                "help": "Percentage of the assembly assigned to chromosomes. 1 item per haplotype in the array. HAP_KEY"
+                            },
+                            "organelles": {
+                                "type": "array",
+                                "help": "Organelle sequences included in the assembly, such as mitochondrial and plastid genomes.",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "assembly_role": {
+                                            "type": "string",
+                                            "help": "Assembly role containing this organelle record. HAP_KEY"
+                                        },
+                                        "organelle_type": {
+                                            "enum": [
+                                                "mitochondrion",
+                                                "plastid",
+                                                "chloroplast"
+                                            ]
+                                        },
+                                        "accession": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "help": "Molecule name, for example MT or PLTD."
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        },
+                                        "length_kb": {
+                                            "type": "number",
+                                            "minimum": 0
+                                        },
+                                        "gc_percent": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 100
+                                        }
+                                    }
                                 }
                             }
-                        }
+                        },
+                        "required": [
+                            "assembly_accession",
+                            "no_of_contigs",
+                            "contig_n50_length",
+                            "no_of_scaffolds",
+                            "scaffold_n50_length",
+                            "genome_size"
+                        ]
                     },
-                    "taxonomy": {
-                        "help": "What species",
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "assembly_id": "string",
-                                "tax_authority": "string",
-                                "ncbi_taxonomy_id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                },
-                                "lineage": {
-                                    "type": "string"
-                                },
-                                "class": {
-                                    "type": "string"
-                                },
-                                "family": {
-                                    "type": "string"
-                                },
-                                "order": {
-                                    "type": "string"
-                                },
-                                "phylum": {
-                                    "type": "string"
-                                },
-                                "common_name": {
-                                    "type": "string",
-                                    "help": "Common name used in the genome note. In data_note this is taken from GBIF when available, or NCBI Datasets as fallback."
-                                },
-                                "common_name_source": {
-                                    "enum": [
-                                        "gbif",
-                                        "ncbi_datasets"
-                                    ],
-                                    "help": "Source used for common_name."
-                                },
-                                "species": {
-                                    "type": "string"
+                    "assembly_analysis": {
+                        "type": "object",
+                        "properties": {
+                            "ncbi_taxonomy_id": {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            "ploidy": {
+                                "type": "object",
+                                "properties": {
+                                    "method": {
+                                        "type": "object",
+                                        "properties": {
+                                            "software": {
+                                                "type": "string"
+                                            },
+                                            "doi": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "count": {
+                                        "type": "number",
+                                        "help": "Ploidy count"
+                                    },
+                                    "formatted_count": {
+                                        "type": "string",
+                                        "help": "Whether the count equates to diploid, triploid, etc."
+                                    }
                                 }
                             },
-                            "required": [
-                                "ncbi_taxonomy_id"
-                            ]
+                            "kmer_analysis": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "enum": [
+                                                "genomescope",
+                                                "smudgeplot"
+                                            ]
+                                        },
+                                        "path": {
+                                            "type": "string",
+                                            "help": "Path to directory containing results"
+                                        },
+                                        "est_size_bp": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "help": "Estimated length of assembly from analysis, recorded in base-pairs"
+                                        }
+                                    }
+                                }
+                            },
+                            "raw_data_object": {
+                                "type": "array",
+                                "help": "Linked to raw_data in sample_prep_schema",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "accession": {
+                                            "type": "string"
+                                        },
+                                        "data_type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "chromosome_tables": {
+                                "help": "Chromosomal pseudomolecules",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "insdc_accession": {
+                                            "type": "string"
+                                        },
+                                        "chromosome": {
+                                            "type": "string"
+                                        },
+                                        "size_mb": {
+                                            "type": "number"
+                                        },
+                                        "gc_percent": {
+                                            "type": "number"
+                                        }
+                                    }
+                                }
+                            },
+                            "taxonomy": {
+                                "help": "What species",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "assembly_id": {
+                                            "type": "string"
+                                        },
+                                        "tax_authority": {
+                                            "type": "string"
+                                        },
+                                        "ncbi_taxonomy_id": {
+                                            "type": "string",
+                                            "minLength": 1
+                                        },
+                                        "lineage": {
+                                            "type": "string"
+                                        },
+                                        "class": {
+                                            "type": "string"
+                                        },
+                                        "family": {
+                                            "type": "string"
+                                        },
+                                        "order": {
+                                            "type": "string"
+                                        },
+                                        "phylum": {
+                                            "type": "string"
+                                        },
+                                        "common_name": {
+                                            "type": "string",
+                                            "help": "Common name used in the genome note. In data_note this is taken from GBIF when available, or NCBI Datasets as fallback."
+                                        },
+                                        "common_name_source": {
+                                            "enum": [
+                                                "gbif",
+                                                "ncbi_datasets"
+                                            ],
+                                            "help": "Source used for common_name."
+                                        },
+                                        "species": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "ncbi_taxonomy_id"
+                                    ]
+                                }
+                            }
                         }
                     }
                 }

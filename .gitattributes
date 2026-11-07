@@ -1,0 +1,2 @@
+# Empty final TSV columns are represented by trailing tab delimiters.
+tsv_output/*.tsv whitespace=-blank-at-eol

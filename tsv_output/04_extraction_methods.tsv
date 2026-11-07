@@ -2,7 +2,7 @@ property_name	parent_property	path	type	description	enum	pattern	required	recomm
 methods		methods	object	Methods used to extract genomic material from provided samples. These are kept as separate subsections because they are populated from different workflow sources.			No	No	ToLPortal	
 involved_persons	methods	methods.involved_persons	array				No	No	AuthorsDB	
 authorsdb_id	involved_persons	methods.involved_persons.authorsdb_id	string	ID from AuthorsDB			No	No	AuthorsDB	
-role	involved_persons	methods.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section			Yes	No	AuthorsDB	
+role	involved_persons	methods.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section	analysis_runner, assembler, curator, consortia, contributing_group, data_generator, annotation, collection, preserver, extraction, sequencing, researcher, other		Yes	No	AuthorsDB	
 email	involved_persons	methods.involved_persons.email	string				Yes	No	AuthorsDB	
 corresponding	involved_persons	methods.involved_persons.corresponding	boolean				No	No	AuthorsDB	
 affiliations	involved_persons	methods.involved_persons.affiliations	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below			Yes	No	AuthorsDB	
@@ -15,8 +15,8 @@ gal_hub	involved_persons	methods.involved_persons.gal_hub	string	GAL Hub/Institu
 orcid	involved_persons	methods.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
 extraction_protocol	methods	methods.extraction_protocol	array	Protocols used for the extraction of the assembly set. Should be listed in the references.			No	No	ToLPortal	
 protocol_id	extraction_protocol	methods.extraction_protocol.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLPortal	
-type	extraction_protocol	methods.extraction_protocol.type	array	Type of Protocol			No	No	ToLPortal	
-role	extraction_protocol	methods.extraction_protocol.role	array				No	No	ToLPortal	
+type	extraction_protocol	methods.extraction_protocol.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	ToLPortal	
+role	extraction_protocol	methods.extraction_protocol.role	array		collection, extraction, library_preparation, sequencing, assembly, decontamination, curation, annotation, analysis, genomenote, research		No	No	ToLPortal	
 version	extraction_protocol	methods.extraction_protocol.version	string	Version of the protocol/workflow/tool/software			No	No	ToLPortal	
 source	extraction_protocol	methods.extraction_protocol.source	string	Source of the Protocol			No	No	ToLPortal	
 doi	extraction_protocol	methods.extraction_protocol.doi	string	DOI of the Protocol			No	No	ToLPortal	
@@ -25,7 +25,7 @@ notes	extraction_protocol	methods.extraction_protocol.notes	string	Any notes or 
 sample_processing	methods	methods.sample_processing	array	Details of extraction methods/protocols.			No	No	ToLPortal	
 sample_role	sample_processing	methods.sample_processing.sample_role		Role of this sample in the genome note workflow.	pacbio, hic, ont, rna, isoseq, chromium, other		No	No	ToLPortal	
 nucleic_acid_extraction	sample_processing	methods.sample_processing.nucleic_acid_extraction	array	Wet-lab extraction and tissue-preparation metadata.			No	No	ToLPortal	
-sample_role	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.sample_role			pacbio, hic, rna, isoseq, chromium, other		No	No	ToLPortal	
+sample_role	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.sample_role			pacbio, hic, ont, rna, isoseq, chromium, other		No	No	ToLPortal	
 sample_accession	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.sample_accession	string				Yes	No	ToLPortal	
 extraction_protocol	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.extraction_protocol	string	Give identifier of protocol in References			No	No	ToLPortal	
 extraction_protocol_plaintext	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.extraction_protocol_plaintext	string	Publication-ready plaintext summary of the extraction protocol			No	No	ToLPortal	

@@ -2,7 +2,7 @@ property_name	parent_property	path	type	description	enum	pattern	required	recomm
 curation		curation	object				No	No		
 involved_persons	curation	curation.involved_persons	array				No	No	AuthorsDB	
 authorsdb_id	involved_persons	curation.involved_persons.authorsdb_id	string	ID from AuthorsDB			No	No	AuthorsDB	
-role	involved_persons	curation.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section			Yes	No	AuthorsDB	
+role	involved_persons	curation.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section	analysis_runner, assembler, curator, consortia, contributing_group, data_generator, annotation, collection, preserver, extraction, sequencing, researcher, other		Yes	No	AuthorsDB	
 email	involved_persons	curation.involved_persons.email	string				Yes	No	AuthorsDB	
 corresponding	involved_persons	curation.involved_persons.corresponding	boolean				No	No	AuthorsDB	
 affiliations	involved_persons	curation.involved_persons.affiliations	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below			Yes	No	AuthorsDB	
@@ -15,8 +15,8 @@ gal_hub	involved_persons	curation.involved_persons.gal_hub	string	GAL Hub/Instit
 orcid	involved_persons	curation.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
 curation_software	curation	curation.curation_software	array	Software/Pipelines used for curation of the assembly set. Should be listed in the references.			No	No		
 protocol_id	curation_software	curation.curation_software.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No		
-type	curation_software	curation.curation_software.type	array	Type of Protocol			No	No		
-role	curation_software	curation.curation_software.role	array				No	No		
+type	curation_software	curation.curation_software.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No		
+role	curation_software	curation.curation_software.role	array		collection, extraction, library_preparation, sequencing, assembly, decontamination, curation, annotation, analysis, genomenote, research		No	No		
 version	curation_software	curation.curation_software.version	string	Version of the protocol/workflow/tool/software			No	No		
 source	curation_software	curation.curation_software.source	string	Source of the Protocol			No	No		
 doi	curation_software	curation.curation_software.doi	string	DOI of the Protocol			No	No		

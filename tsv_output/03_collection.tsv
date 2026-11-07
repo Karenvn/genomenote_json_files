@@ -12,8 +12,8 @@ one_c_value_pg	flow_cytometry	flow_cytometry.one_c_value_pg	number	Measured 1C n
 genome_size_estimate_mb	flow_cytometry	flow_cytometry.genome_size_estimate_mb	number	Equivalent 1C genome size estimate in megabases.			No	No	STS	
 collection_protocol		collection_protocol	array	Protocols used for the collection of the assembly set. Should be listed in the references.			No	No	STS	
 protocol_id	collection_protocol	collection_protocol.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	STS	
-type	collection_protocol	collection_protocol.type	array	Type of Protocol			No	No	STS	
-role	collection_protocol	collection_protocol.role	array				No	No	STS	
+type	collection_protocol	collection_protocol.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	STS	
+role	collection_protocol	collection_protocol.role	array		collection, extraction, library_preparation, sequencing, assembly, decontamination, curation, annotation, analysis, genomenote, research		No	No	STS	
 version	collection_protocol	collection_protocol.version	string	Version of the protocol/workflow/tool/software			No	No	STS	
 source	collection_protocol	collection_protocol.source	string	Source of the Protocol			No	No	STS	
 doi	collection_protocol	collection_protocol.doi	string	DOI of the Protocol			No	No	STS	
@@ -37,7 +37,7 @@ longitude	collection_data	collection_data.longitude	number	Longitude of the coll
 elevation	collection_data	collection_data.elevation	number	Elevation at which the sample was collected, in metres.			No	Yes	STS	
 involved_persons		involved_persons	array				No	No	AuthorsDB	
 authorsdb_id	involved_persons	involved_persons.authorsdb_id	string	Identifier for the person in AuthorsDB.			Yes	No	AuthorsDB	
-roles	involved_persons	involved_persons.roles	array	Sample-level roles performed by this person.			Yes	No	AuthorsDB	
+roles	involved_persons	involved_persons.roles	array	Sample-level roles performed by this person.	collector, identifier, preserver		Yes	No	AuthorsDB	
 specimen_images		specimen_images	array	Images of the collected specimen or source individual used in the genome note.			No	Yes	STS	
 image	specimen_images	specimen_images.image	string				No	No	STS	
 link	specimen_images	specimen_images.link	string				No	No	STS	

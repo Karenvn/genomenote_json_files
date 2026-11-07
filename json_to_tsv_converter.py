@@ -309,6 +309,13 @@ def extract_schema_metadata(
         enum_values = node.get("enum")
         if enum_values is None and "const" in node:
             enum_values = [node["const"]]
+        # Scalar array entries have no child property row. Show their allowed
+        # values on the array row (for example contributor roles).
+        items = node.get("items")
+        if enum_values is None and node.get("type") == "array" and isinstance(items, dict):
+            enum_values = items.get("enum")
+            if enum_values is None and "const" in items:
+                enum_values = [items["const"]]
 
         if is_required:
             required = "Conditional" if condition else "Yes"

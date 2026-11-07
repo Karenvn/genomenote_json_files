@@ -53,6 +53,7 @@
                                             "enum": [
                                                 "pacbio",
                                                 "hic",
+                                                "ont",
                                                 "rna",
                                                 "isoseq",
                                                 "chromium",

@@ -12,7 +12,7 @@ value	identifier	references.identifier.value		DOI, without the https://doi.org/ 
 format	identifier	references.identifier.format			PMID		No	No	bibtex	oneOf[1]
 value	identifier	references.identifier.value		PMID, without the https://www.ncbi.nlm.nih.gov/pmc/ prefix, example is: 34567890		^\d+$	No	No	bibtex	oneOf[1]
 format	identifier	references.identifier.format			ISBN		No	No	bibtex	oneOf[2]
-value	identifier	references.identifier.value		ISBN (13) code example is: 978-3-16-148410-0, ISBN (10) code example is: 3-16-148410-0		NEED A PATTERN HERE TO VALIDATE	No	No	bibtex	oneOf[2]
+value	identifier	references.identifier.value		Bare ISBN-10 or ISBN-13, optionally separated by single hyphens or spaces. ISBN-10 permits a final X or x; ISBN-13 starts with 978 or 979. Examples: 3-16-148410-0 and 978-3-16-148410-0. This checks basic format only, not the checksum or registered hyphenation groups.		^(?:[0-9](?:[- ]?[0-9]){8}[- ]?[0-9Xx]|9[- ]?7[- ]?[89](?:[- ]?[0-9]){10})$	No	No	bibtex	oneOf[2]
 format	identifier	references.identifier.format			Other		No	No	bibtex	oneOf[3]
 value	identifier	references.identifier.value	string	An alternative identification system, this will need validating!			No	No	bibtex	oneOf[3]
 pages	references	references.pages	object	Pages of the reference if applicable, output would be as {start}-{end}			No	No	bibtex	

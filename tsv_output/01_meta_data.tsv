@@ -17,7 +17,7 @@ title	parent_projects	metadata.parent_projects.title	string				No	No	tolqc, STS
 formatted_parent_projects	metadata	metadata.formatted_parent_projects	string	Publication-ready parent project string derived from parent_projects by data_note. Describes, e.g. Project Psyche.			Yes	Yes	tolqc, STS	
 authors	metadata	metadata.authors	array				Yes	No	AuthorsDB, AllJson	
 authorsdb_id	authors	metadata.authors.authorsdb_id	string	ID from AuthorsDB			No	No	AuthorsDB, AllJson	
-role	authors	metadata.authors.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section			Yes	No	AuthorsDB, AllJson	
+role	authors	metadata.authors.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section	analysis_runner, assembler, curator, consortia, contributing_group, data_generator, annotation, collection, preserver, extraction, sequencing, researcher, other		Yes	No	AuthorsDB, AllJson	
 email	authors	metadata.authors.email	string				Yes	No	AuthorsDB, AllJson	
 corresponding	authors	metadata.authors.corresponding	boolean				No	No	AuthorsDB, AllJson	
 affiliations	authors	metadata.authors.affiliations	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below			Yes	No	AuthorsDB, AllJson	
@@ -42,7 +42,7 @@ e_location_id	journal_data	publication_metadata.journal_data.e_location_id	strin
 license	journal_data	publication_metadata.journal_data.license	string				No	No	AuthorsDB	
 submission_date	journal_data	publication_metadata.journal_data.submission_date	string				No	No	AuthorsDB	
 publication_date	journal_data	publication_metadata.journal_data.publication_date	string				No	No	AuthorsDB	
-genome_note_data	publication_metadata	publication_metadata.genome_note_data					Yes	No	AuthorsDB	
+genome_note_data	publication_metadata	publication_metadata.genome_note_data	object				Yes	No	AuthorsDB	
 existing_genome_note	genome_note_data	publication_metadata.genome_note_data.existing_genome_note	string	Link to an existing genome note, if this is not a v1 genome note			No	No	AuthorsDB	
 submission_date	genome_note_data	publication_metadata.genome_note_data.submission_date	string				No	No	AuthorsDB	
 publication_date	genome_note_data	publication_metadata.genome_note_data.publication_date	string				No	No	AuthorsDB	

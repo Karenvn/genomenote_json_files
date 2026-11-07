@@ -2,7 +2,7 @@ property_name	parent_property	path	type	description	enum	pattern	required	recomm
 methods		methods	object	Methods used to prepare a genomic library for sequencing. These are kept as separate subsections because they are populated from different workflow sources.			No	No	ToLPortal	
 involved_persons	methods	methods.involved_persons	array				No	No	AuthorsDB	
 authorsdb_id	involved_persons	methods.involved_persons.authorsdb_id	string	ID from AuthorsDB			No	No	AuthorsDB	
-role	involved_persons	methods.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section			Yes	No	AuthorsDB	
+role	involved_persons	methods.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section	analysis_runner, assembler, curator, consortia, contributing_group, data_generator, annotation, collection, preserver, extraction, sequencing, researcher, other		Yes	No	AuthorsDB	
 email	involved_persons	methods.involved_persons.email	string				Yes	No	AuthorsDB	
 corresponding	involved_persons	methods.involved_persons.corresponding	boolean				No	No	AuthorsDB	
 affiliations	involved_persons	methods.involved_persons.affiliations	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below			Yes	No	AuthorsDB	
@@ -15,8 +15,8 @@ gal_hub	involved_persons	methods.involved_persons.gal_hub	string	GAL Hub/Institu
 orcid	involved_persons	methods.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
 prep_protocol	methods	methods.prep_protocol	array	Protocols used for the library preparation of the assembly set. Should be listed in the references.			No	No	ToLPortal	
 protocol_id	prep_protocol	methods.prep_protocol.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLPortal	
-type	prep_protocol	methods.prep_protocol.type	array	Type of Protocol			No	No	ToLPortal	
-role	prep_protocol	methods.prep_protocol.role	array				No	No	ToLPortal	
+type	prep_protocol	methods.prep_protocol.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	ToLPortal	
+role	prep_protocol	methods.prep_protocol.role	array		collection, extraction, library_preparation, sequencing, assembly, decontamination, curation, annotation, analysis, genomenote, research		No	No	ToLPortal	
 version	prep_protocol	methods.prep_protocol.version	string	Version of the protocol/workflow/tool/software			No	No	ToLPortal	
 source	prep_protocol	methods.prep_protocol.source	string	Source of the Protocol			No	No	ToLPortal	
 doi	prep_protocol	methods.prep_protocol.doi	string	DOI of the Protocol			No	No	ToLPortal	

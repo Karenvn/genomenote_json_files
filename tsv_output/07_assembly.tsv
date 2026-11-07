@@ -2,7 +2,7 @@ property_name	parent_property	path	type	description	enum	pattern	required	recomm
 assembly_methods		assembly_methods	object				No	No	ToLQC	
 involved_persons	assembly_methods	assembly_methods.involved_persons	array				No	No	AuthorsDB	
 authorsdb_id	involved_persons	assembly_methods.involved_persons.authorsdb_id	string	ID from AuthorsDB			No	No	AuthorsDB	
-role	involved_persons	assembly_methods.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section			Yes	No	AuthorsDB	
+role	involved_persons	assembly_methods.involved_persons.role	array	Used to assign credit of author to the outputs in the Genome Note - currently also repeated in each section	analysis_runner, assembler, curator, consortia, contributing_group, data_generator, annotation, collection, preserver, extraction, sequencing, researcher, other		Yes	No	AuthorsDB	
 email	involved_persons	assembly_methods.involved_persons.email	string				Yes	No	AuthorsDB	
 corresponding	involved_persons	assembly_methods.involved_persons.corresponding	boolean				No	No	AuthorsDB	
 affiliations	involved_persons	assembly_methods.involved_persons.affiliations	array	Array of affiliations for each author should be a list of IDs, determined by the affiliation array below			Yes	No	AuthorsDB	
@@ -14,10 +14,10 @@ gal_association	involved_persons	assembly_methods.involved_persons.gal_associati
 gal_hub	involved_persons	assembly_methods.involved_persons.gal_hub	string	GAL Hub/Institute responsible for the collection			No	Yes	AuthorsDB	if/else
 orcid	involved_persons	assembly_methods.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
 assembly_method_text	assembly_methods	assembly_methods.assembly_method_text	string	Publication-ready or template-generated text describing the assembly method.			Yes	No	ToLQC	
-assembly_software	assembly_methods	assembly_methods.assembly_software	array	Software/Pipelines used for assembly generation, scaffolding or purging, for example Hifiasm, purge_dups or YaHS. Should be listed in the references.			No	No	ToLQC	
+assembly_software	assembly_methods	assembly_methods.assembly_software	array	Software/Pipelines used for assembly generation, scaffolding, purging, decontamination or other processing before manual curation. For example this could include Hifiasm, purge_dups, YaHS, ASCC, FCS-GX. Should be listed in the references.			No	No	ToLQC	
 protocol_id	assembly_software	assembly_methods.assembly_software.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLQC	
-type	assembly_software	assembly_methods.assembly_software.type	array	Type of Protocol			No	No	ToLQC	
-role	assembly_software	assembly_methods.assembly_software.role	array				No	No	ToLQC	
+type	assembly_software	assembly_methods.assembly_software.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	ToLQC	
+role	assembly_software	assembly_methods.assembly_software.role	array		collection, extraction, library_preparation, sequencing, assembly, decontamination, curation, annotation, analysis, genomenote, research		No	No	ToLQC	
 version	assembly_software	assembly_methods.assembly_software.version	string	Version of the protocol/workflow/tool/software			No	No	ToLQC	
 source	assembly_software	assembly_methods.assembly_software.source	string	Source of the Protocol			No	No	ToLQC	
 doi	assembly_software	assembly_methods.assembly_software.doi	string	DOI of the Protocol			No	No	ToLQC	
@@ -62,7 +62,7 @@ length_kb	organelles	assembly_stats.assembly_information.organelles.length_kb	nu
 gc_percent	organelles	assembly_stats.assembly_information.organelles.gc_percent	number				No	No	ToLQC	
 assembly_analysis	assembly_stats	assembly_stats.assembly_analysis	object				No	No	ToLQC	
 ncbi_taxonomy_id	assembly_analysis	assembly_stats.assembly_analysis.ncbi_taxonomy_id	string				No	No	ToLQC	
-ploidy	assembly_analysis	assembly_stats.assembly_analysis.ploidy					No	No	ToLQC	
+ploidy	assembly_analysis	assembly_stats.assembly_analysis.ploidy	object				No	No	ToLQC	
 method	ploidy	assembly_stats.assembly_analysis.ploidy.method	object				No	No	ToLQC	
 software	method	assembly_stats.assembly_analysis.ploidy.method.software	string				No	No	ToLQC	
 doi	method	assembly_stats.assembly_analysis.ploidy.method.doi	string				No	No	ToLQC	
