@@ -25,6 +25,8 @@ notes	sequencing_protocol	methods.sequencing_protocol.notes	string	Any notes or 
 sample_processing	methods	methods.sample_processing	array	Sequencing records grouped by sample role. Each item contains its library sequencing metadata, raw-data records and cumulative statistics for that same role.			No	No	ToLPortal	
 sample_role	sample_processing	methods.sample_processing.sample_role		Role of this sample in the genome note workflow.	pacbio, hic, ont, rna, isoseq, chromium, other		No	No	ToLPortal	
 library_sequencing	sample_processing	methods.sample_processing.library_sequencing	array	Library sequencing platform and method metadata for this sample role. Counts and yields are represented under raw_data and cumulative_raw_data_statistics in the same sample_processing item.			No	No	ToLPortal	
+library_id	library_sequencing	methods.sample_processing.library_sequencing.library_id	string	Identifier of the library recorded as library_id in the library preparation methods for this public archive run. Omit when the link is unknown; do not infer it from a shared sample accession, sample role or library display name.		\S	No	No	ToLPortal	
+experiment_accession	library_sequencing	methods.sample_processing.library_sequencing.experiment_accession	string	INSDC experiment associated with this archive run (ERX/SRX); a library may be used by several experiments.			No	No	ToLPortal	
 technology	library_sequencing	methods.sample_processing.library_sequencing.technology		Sequencing or data-generation technology.	PacBio HiFi, Hi-C, RNA-seq, Iso-Seq, 10x Chromium, ONT, Bionano, Illumina, other		No	No	ToLPortal	
 sample_accession	library_sequencing	methods.sample_processing.library_sequencing.sample_accession	string				Yes	No	ToLPortal	
 sample_derived_from	library_sequencing	methods.sample_processing.library_sequencing.sample_derived_from	string				No	No	ToLPortal	
@@ -33,11 +35,12 @@ sequencing_protocol	library_sequencing	methods.sample_processing.library_sequenc
 sequencing_protocol_plaintext	library_sequencing	methods.sample_processing.library_sequencing.sequencing_protocol_plaintext	string	Publication-ready plaintext summary of the sequencing protocol			Yes	No	ToLPortal	
 instrument_model	library_sequencing	methods.sample_processing.library_sequencing.instrument_model	string	Model of sequencing instrument used			Yes	No	ToLPortal	
 raw_data	sample_processing	methods.sample_processing.raw_data	array	Public data records for this sample role. This is the data actually produced by the sequencing workflow, not the acquisition or extraction metadata.			No	No	ToLPortal	
+library_id	raw_data	methods.sample_processing.raw_data.library_id	string	Identifier of the library recorded as library_id in the library preparation methods for this public archive run. Omit when the link is unknown; do not infer it from a shared sample accession, sample role or library display name.		\S	No	No	ToLPortal	
 sample_accession	raw_data	methods.sample_processing.raw_data.sample_accession	string				No	No	ToLPortal	
 data_type	raw_data	methods.sample_processing.raw_data.data_type		Type of data represented by this raw-data record.	pacbio_hifi, longread_pacbio, hic, hic_arima2, hic_cifi, rna_seq, rnaseq, isoseq, isoseq_pacbio, 10x_chromium, chromium, ont, bionano, wgs, other		No	No	ToLPortal	
 run_accession	raw_data	methods.sample_processing.raw_data.run_accession	string				No	No	ToLPortal	
 experiment_accession	raw_data	methods.sample_processing.raw_data.experiment_accession	string				No	No	ToLPortal	
-library_name	raw_data	methods.sample_processing.raw_data.library_name	string				No	No	ToLPortal	
+library_name	raw_data	methods.sample_processing.raw_data.library_name	string	Library display name from the source metadata. This is not guaranteed to be a unique library identifier; use library_id for an explicit link to library preparation.			No	No	ToLPortal	
 library_layout	raw_data	methods.sample_processing.raw_data.library_layout	string				No	No	ToLPortal	
 library_selection	raw_data	methods.sample_processing.raw_data.library_selection	string				No	No	ToLPortal	
 library_source	raw_data	methods.sample_processing.raw_data.library_source	string				No	No	ToLPortal	

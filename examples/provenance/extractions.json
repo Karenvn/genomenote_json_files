@@ -1,0 +1,23 @@
+{
+    "methods": {
+        "sample_processing": [
+            {
+                "sample_role": "pacbio",
+                "nucleic_acid_extraction": [
+                    {
+                        "extraction_id": "extract-A",
+                        "sample_accession": "sample-A",
+                        "tissue_type": "leaf",
+                        "extraction_protocol_plaintext": "Example extraction protocol A"
+                    },
+                    {
+                        "extraction_id": "extract-B",
+                        "sample_accession": "sample-A",
+                        "tissue_type": "leaf",
+                        "extraction_protocol_plaintext": "Example extraction protocol B"
+                    }
+                ]
+            }
+        ]
+    }
+}

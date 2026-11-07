@@ -49,6 +49,24 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "library_id": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "pattern": "\\S",
+                                            "help": "Stable identifier for this library, unique within the genome note. Used by sequencing records to identify their source library; a display name is not automatically an identifier. Omit when the library identity is unknown."
+                                        },
+                                        "source_extraction_ids": {
+                                            "type": "array",
+                                            "minItems": 1,
+                                            "uniqueItems": true,
+                                            "items": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "pattern": "\\S",
+                                                "help": "Identifier of a source extraction event recorded as extraction_id in the extraction methods."
+                                            },
+                                            "help": "Known extraction events used to prepare this library. Multiple identifiers represent pooled extraction inputs. Omit when the source extraction links are unknown; do not infer them from a shared sample accession or sample role."
+                                        },
                                         "technology": {
                                             "enum": [
                                                 "PacBio HiFi",
@@ -68,7 +86,7 @@
                                         },
                                         "experiment_accession": {
                                             "type": "string",
-                                            "help": "Accession from INSDC of output sequencing data from this library (ERR/ERX/SRR/SRX)"
+                                            "help": "One INSDC experiment accession associated with this library, for example ERX or SRX. A physical library may be used by several experiments; this scalar is not an exhaustive list. Record each archive run's experiment_accession with the sequencing data."
                                         },
                                         "library_name": {
                                             "type": "string"
@@ -81,6 +99,16 @@
                                             "type": "string",
                                             "help": "Short publication-ready plaintext-summary of the library construction protocol"
                                         }
+                                    },
+                                    "if": {
+                                        "required": [
+                                            "source_extraction_ids"
+                                        ]
+                                    },
+                                    "then": {
+                                        "required": [
+                                            "library_id"
+                                        ]
                                     }
                                 }
                             }

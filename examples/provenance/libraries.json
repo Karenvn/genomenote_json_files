@@ -1,0 +1,42 @@
+{
+    "methods": {
+        "library_prep": [
+            {
+                "sample_role": "pacbio",
+                "library_preparation_and_sequencing": [
+                    {
+                        "library_id": "library-A",
+                        "source_extraction_ids": [
+                            "extract-A"
+                        ],
+                        "sample_accession": "sample-A",
+                        "library_name": "Display name 1",
+                        "experiment_accession": "experiment-1",
+                        "technology": "PacBio HiFi"
+                    },
+                    {
+                        "library_id": "library-B",
+                        "source_extraction_ids": [
+                            "extract-B"
+                        ],
+                        "sample_accession": "sample-A",
+                        "library_name": "Display name 2",
+                        "experiment_accession": "experiment-2",
+                        "technology": "PacBio HiFi"
+                    },
+                    {
+                        "library_id": "library-pool",
+                        "source_extraction_ids": [
+                            "extract-A",
+                            "extract-B"
+                        ],
+                        "sample_accession": "sample-A",
+                        "library_name": "Display name 3",
+                        "experiment_accession": "experiment-3",
+                        "technology": "PacBio HiFi"
+                    }
+                ]
+            }
+        ]
+    }
+}

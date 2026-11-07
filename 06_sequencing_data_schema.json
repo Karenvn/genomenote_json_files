@@ -49,6 +49,16 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "library_id": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "pattern": "\\S",
+                                            "help": "Identifier of the library recorded as library_id in the library preparation methods for this public archive run. Omit when the link is unknown; do not infer it from a shared sample accession, sample role or library display name."
+                                        },
+                                        "experiment_accession": {
+                                            "type": "string",
+                                            "help": "INSDC experiment associated with this archive run (ERX/SRX); a library may be used by several experiments."
+                                        },
                                         "technology": {
                                             "enum": [
                                                 "PacBio HiFi",
@@ -101,6 +111,12 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "library_id": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "pattern": "\\S",
+                                            "help": "Identifier of the library recorded as library_id in the library preparation methods for this public archive run. Omit when the link is unknown; do not infer it from a shared sample accession, sample role or library display name."
+                                        },
                                         "sample_accession": {
                                             "type": "string"
                                         },
@@ -131,7 +147,8 @@
                                             "type": "string"
                                         },
                                         "library_name": {
-                                            "type": "string"
+                                            "type": "string",
+                                            "help": "Library display name from the source metadata. This is not guaranteed to be a unique library identifier; use library_id for an explicit link to library preparation."
                                         },
                                         "library_layout": {
                                             "type": "string"

@@ -49,6 +49,12 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "extraction_id": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "pattern": "\\S",
+                                            "help": "Stable identifier for this extraction event, unique within the genome note. Distinguishes separate extractions from the same sample; do not automatically substitute the sample accession. Omit when the extraction identity is unknown."
+                                        },
                                         "sample_role": {
                                             "enum": [
                                                 "pacbio",

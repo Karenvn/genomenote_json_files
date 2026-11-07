@@ -25,6 +25,7 @@ notes	extraction_protocol	methods.extraction_protocol.notes	string	Any notes or 
 sample_processing	methods	methods.sample_processing	array	Details of extraction methods/protocols.			No	No	ToLPortal	
 sample_role	sample_processing	methods.sample_processing.sample_role		Role of this sample in the genome note workflow.	pacbio, hic, ont, rna, isoseq, chromium, other		No	No	ToLPortal	
 nucleic_acid_extraction	sample_processing	methods.sample_processing.nucleic_acid_extraction	array	Wet-lab extraction and tissue-preparation metadata.			No	No	ToLPortal	
+extraction_id	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.extraction_id	string	Stable identifier for this extraction event, unique within the genome note. Distinguishes separate extractions from the same sample; do not automatically substitute the sample accession. Omit when the extraction identity is unknown.		\S	No	No	ToLPortal	
 sample_role	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.sample_role			pacbio, hic, ont, rna, isoseq, chromium, other		No	No	ToLPortal	
 sample_accession	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.sample_accession	string				Yes	No	ToLPortal	
 extraction_protocol	nucleic_acid_extraction	methods.sample_processing.nucleic_acid_extraction.extraction_protocol	string	Give identifier of protocol in References			No	No	ToLPortal	

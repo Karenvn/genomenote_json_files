@@ -18,5 +18,12 @@ jobs:
       - run: python -m pip install -r requirements-dev.txt
       - run: python validate_schemas.py
       - run: python -m unittest discover -s tests -v
+      - run: >-
+          python validate_provenance.py
+          --collection examples/provenance/sample.json
+          --extractions examples/provenance/extractions.json
+          --libraries examples/provenance/libraries.json
+          --sequencing examples/provenance/sequencing.json
+          --require-complete
       - run: python json_to_tsv_converter.py
       - run: git diff --exit-code -- tsv_output

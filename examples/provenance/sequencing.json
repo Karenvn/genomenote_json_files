@@ -1,0 +1,70 @@
+{
+    "methods": {
+        "sample_processing": [
+            {
+                "sample_role": "pacbio",
+                "library_sequencing": [
+                    {
+                        "sample_accession": "sample-A",
+                        "library_id": "library-A",
+                        "sequencing_accession": "run-1",
+                        "experiment_accession": "experiment-1",
+                        "technology": "PacBio HiFi",
+                        "sequencing_protocol": "example-protocol",
+                        "sequencing_protocol_plaintext": "Synthetic sequencing method",
+                        "instrument_model": "Example instrument"
+                    },
+                    {
+                        "sample_accession": "sample-A",
+                        "library_id": "library-B",
+                        "sequencing_accession": "run-2",
+                        "experiment_accession": "experiment-2",
+                        "technology": "PacBio HiFi",
+                        "sequencing_protocol": "example-protocol",
+                        "sequencing_protocol_plaintext": "Synthetic sequencing method",
+                        "instrument_model": "Example instrument"
+                    },
+                    {
+                        "sample_accession": "sample-A",
+                        "library_id": "library-pool",
+                        "sequencing_accession": "run-3",
+                        "experiment_accession": "experiment-3",
+                        "technology": "PacBio HiFi",
+                        "sequencing_protocol": "example-protocol",
+                        "sequencing_protocol_plaintext": "Synthetic sequencing method",
+                        "instrument_model": "Example instrument"
+                    }
+                ],
+                "raw_data": [
+                    {
+                        "sample_accession": "sample-A",
+                        "library_id": "library-A",
+                        "run_accession": "run-1",
+                        "experiment_accession": "experiment-1",
+                        "data_type": "pacbio_hifi",
+                        "read_count": 1000,
+                        "base_count_gb": 0.01
+                    },
+                    {
+                        "sample_accession": "sample-A",
+                        "library_id": "library-B",
+                        "run_accession": "run-2",
+                        "experiment_accession": "experiment-2",
+                        "data_type": "pacbio_hifi",
+                        "read_count": 1000,
+                        "base_count_gb": 0.01
+                    },
+                    {
+                        "sample_accession": "sample-A",
+                        "library_id": "library-pool",
+                        "run_accession": "run-3",
+                        "experiment_accession": "experiment-3",
+                        "data_type": "pacbio_hifi",
+                        "read_count": 1000,
+                        "base_count_gb": 0.01
+                    }
+                ]
+            }
+        ]
+    }
+}

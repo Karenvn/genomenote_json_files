@@ -87,8 +87,9 @@ using another validator must implement citation-key uniqueness separately.
 - Schema 07 retains the existing `genome_size` name and its help text meaning
   assembly length in base pairs. The distinction from estimated genome size
   should be agreed before an exporter maps these values.
-- Cross-component sample/assembly/workflow/reference links are not yet checked.
-  This repair does not add scientific consistency checks or publication rules.
+- Cross-component assembly/workflow/reference links are not yet checked.
+  The optional provenance command below checks sample/extraction/library/run
+  links; it does not add general scientific consistency or publication rules.
 - Template versions, programme profiles, optional introductions, edited prose,
   author ordering and complete article/PDF export are separate workflow work.
 
@@ -97,3 +98,42 @@ escaped validation, local reference resolution, repository lint checks and TSV
 consistency. It uses synthetic records and does not publish manuscript data.
 The TSV converter also shows allowed values for scalar array entries, including
 contributor roles, on their array's row.
+
+## Follow-up: explicit extraction and library links
+
+The structural repair was followed by these additive relationship fields:
+
+| Record | New field | Meaning |
+| --- | --- | --- |
+| 04 `methods.sample_processing[].nucleic_acid_extraction[]` | `extraction_id` | Stable identifier for this extraction event within the note. |
+| 05 `methods.library_prep[].library_preparation_and_sequencing[]` | `library_id` | Stable identifier for this library record within the note. |
+| Same 05 record | `source_extraction_ids[]` | Explicit references to one or more 04 extraction records. |
+| 06 `methods.sample_processing[].library_sequencing[]` | `library_id` | Reference to the library that produced this public archive run. |
+| Same 06 record | `experiment_accession` | Experiment associated with this run (ERX/SRX); distinct from its ERR/SRR run accession. |
+| 06 `methods.sample_processing[].raw_data[]` | `library_id` | The same library reference for the raw-data view of a run. |
+
+IDs must be nonblank. Source-extraction lists must be nonempty and contain no
+duplicates. If a library supplies extraction links, it must also supply its own
+ID. Otherwise the additions remain optional for compatibility. Unknown links
+should be omitted, not inferred from a shared BioSample, role or display name.
+
+Use a namespaced source identifier when its identity is established. A stable
+local record ID is also allowed; it must not be presented as a known physical
+laboratory identifier if the source only distinguishes an experiment or run.
+`library_name` remains display metadata. Several libraries can use one extract;
+one library can refer to multiple extracts when that pooling is known. This does
+not by itself define tissue-preparation/container provenance or all pooled-sample
+relationships.
+
+`library_id` on a sequencing record is scalar because that record describes an
+archive run, not a physical multiplexed instrument run. A physical library may
+be used for several archive experiments. The existing scalar
+`05.experiment_accession` is one associated experiment, not an exhaustive list;
+keep the experiment belonging to each run in schema 06.
+
+`validate_provenance.py` checks the component schemas plus unique extraction and
+library IDs, resolvable references and consistent run/library/experiment links.
+Collection files can be supplied to check sample references. Missing provenance
+is reported as warnings by default, and as errors with `--require-complete`.
+It checks the supplied assertions; it cannot recover missing source evidence.
+See [the runnable synthetic example](examples/provenance/README.md).

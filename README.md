@@ -63,3 +63,18 @@ rules, template profiles and whole-article rendering still need agreement.
 Contributors can now have a `preserver` role. The existing `curator` author role
 and curation contributors remain available. Representing a contributor does not
 by itself decide whether they must be included as a manuscript author.
+
+## Sample, extraction, library and sequencing links
+
+Schemas 04–06 now provide optional explicit links: `extraction_id`,
+`library_id` and `source_extraction_ids`. A BioSample accession or sample role
+does not identify an individual extraction. See the
+[synthetic linked example](examples/provenance/README.md) for the data and command
+to check these relationships across component files. The separate
+`validate_provenance.py` command checks identifiers and references that ordinary
+JSON Schema validation cannot check across these files.
+
+These are additive proposals in this fork. Existing unlinked records still pass
+the component schemas; use `--require-complete` with the provenance command to
+reject missing extraction-to-library-to-run links. Additional relationships,
+laboratory measurement stages and broader publication rules remain to be defined.
