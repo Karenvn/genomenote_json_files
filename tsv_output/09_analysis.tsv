@@ -12,7 +12,7 @@ middle_names	involved_persons	analysis.involved_persons.middle_names	string	Midd
 given_names	involved_persons	analysis.involved_persons.given_names	string	Given names of the author (First name)			Conditional	No	AuthorsDB	if/else
 gal_association	involved_persons	analysis.involved_persons.gal_association	string	GAL association if applicable - Collectors ONLY			No	No	AuthorsDB	if/else
 gal_hub	involved_persons	analysis.involved_persons.gal_hub	string	GAL Hub/Institute responsible for the collection			No	Yes	AuthorsDB	if/else
-orcid	involved_persons	analysis.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
+orcid	involved_persons	analysis.involved_persons.orcid	string	ORCID of the author/person			No	No	AuthorsDB	if/else
 analysis_software	analysis	analysis.analysis_software	array	Software/Pipelines used for the analysis of the assembly set. Should be listed in the references.			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 protocol_id	analysis_software	analysis.analysis_software.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLQC, GAP/WorkflowsDB, meta-notes	
 type	analysis_software	analysis.analysis_software.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	ToLQC, GAP/WorkflowsDB, meta-notes	

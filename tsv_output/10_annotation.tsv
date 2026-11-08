@@ -12,7 +12,7 @@ middle_names	involved_persons	annotation.involved_persons.middle_names	string	Mi
 given_names	involved_persons	annotation.involved_persons.given_names	string	Given names of the author (First name)			Conditional	No	AuthorsDB	if/else
 gal_association	involved_persons	annotation.involved_persons.gal_association	string	GAL association if applicable - Collectors ONLY			No	No	AuthorsDB	if/else
 gal_hub	involved_persons	annotation.involved_persons.gal_hub	string	GAL Hub/Institute responsible for the collection			No	Yes	AuthorsDB	if/else
-orcid	involved_persons	annotation.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
+orcid	involved_persons	annotation.involved_persons.orcid	string	ORCID of the author/person			No	No	AuthorsDB	if/else
 annotation_software	annotation	annotation.annotation_software	array	Software/Pipelines used for the annotation of the assembly set. Should be listed in the references.			No	No		
 protocol_id	annotation_software	annotation.annotation_software.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No		
 type	annotation_software	annotation.annotation_software.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No		

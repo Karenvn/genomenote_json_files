@@ -120,8 +120,7 @@
                 },
                 "required": [
                     "surname",
-                    "given_names",
-                    "orcid"
+                    "given_names"
                 ],
                 "if": {
                     "properties": {

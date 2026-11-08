@@ -12,7 +12,7 @@ middle_names	involved_persons	methods.involved_persons.middle_names	string	Middl
 given_names	involved_persons	methods.involved_persons.given_names	string	Given names of the author (First name)			Conditional	No	AuthorsDB	if/else
 gal_association	involved_persons	methods.involved_persons.gal_association	string	GAL association if applicable - Collectors ONLY			No	No	AuthorsDB	if/else
 gal_hub	involved_persons	methods.involved_persons.gal_hub	string	GAL Hub/Institute responsible for the collection			No	Yes	AuthorsDB	if/else
-orcid	involved_persons	methods.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
+orcid	involved_persons	methods.involved_persons.orcid	string	ORCID of the author/person			No	No	AuthorsDB	if/else
 extraction_protocol	methods	methods.extraction_protocol	array	Protocols used for the extraction of the assembly set. Should be listed in the references.			No	No	ToLPortal	
 protocol_id	extraction_protocol	methods.extraction_protocol.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLPortal	
 type	extraction_protocol	methods.extraction_protocol.type	array	Type of Protocol	software, tool, pipeline, workflow, protocol, other		No	No	ToLPortal	

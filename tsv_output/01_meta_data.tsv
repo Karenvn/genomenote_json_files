@@ -27,7 +27,7 @@ middle_names	authors	metadata.authors.middle_names	string	Middle names of the au
 given_names	authors	metadata.authors.given_names	string	Given names of the author (First name)			Conditional	No	AuthorsDB, AllJson	if/else
 gal_association	authors	metadata.authors.gal_association	string	GAL association if applicable - Collectors ONLY			No	No	AuthorsDB, AllJson	if/else
 gal_hub	authors	metadata.authors.gal_hub	string	GAL Hub/Institute responsible for the collection			No	Yes	AuthorsDB, AllJson	if/else
-orcid	authors	metadata.authors.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB, AllJson	if/else
+orcid	authors	metadata.authors.orcid	string	ORCID of the author/person			No	No	AuthorsDB, AllJson	if/else
 affiliations	metadata	metadata.affiliations	array				Yes	No	tolqc, STS	
 id	affiliations	metadata.affiliations.id	string				No	No	tolqc, STS	
 affiliation	affiliations	metadata.affiliations.affiliation	string				No	No	tolqc, STS	

@@ -12,7 +12,7 @@ middle_names	involved_persons	assembly_methods.involved_persons.middle_names	str
 given_names	involved_persons	assembly_methods.involved_persons.given_names	string	Given names of the author (First name)			Conditional	No	AuthorsDB	if/else
 gal_association	involved_persons	assembly_methods.involved_persons.gal_association	string	GAL association if applicable - Collectors ONLY			No	No	AuthorsDB	if/else
 gal_hub	involved_persons	assembly_methods.involved_persons.gal_hub	string	GAL Hub/Institute responsible for the collection			No	Yes	AuthorsDB	if/else
-orcid	involved_persons	assembly_methods.involved_persons.orcid	string	ORCID of the author/person			Conditional	No	AuthorsDB	if/else
+orcid	involved_persons	assembly_methods.involved_persons.orcid	string	ORCID of the author/person			No	No	AuthorsDB	if/else
 assembly_method_text	assembly_methods	assembly_methods.assembly_method_text	string	Publication-ready or template-generated text describing the assembly method.			Yes	No	ToLQC	
 assembly_software	assembly_methods	assembly_methods.assembly_software	array	Software/Pipelines used for assembly generation, scaffolding, purging, decontamination or other processing before manual curation. For example this could include Hifiasm, purge_dups, YaHS, ASCC, FCS-GX. Should be listed in the references.			No	No	ToLQC	
 protocol_id	assembly_software	assembly_methods.assembly_software.protocol_id	string	Link to the reference ID of the protocol - citation_key of references_schema.json			No	No	ToLQC	
