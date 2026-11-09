@@ -96,76 +96,77 @@
                                 }
                             }
                         }
-                    },
-                    "raw_data": {
-                        "type": "array",
-                        "help": "Public data records. This is the data actually produced by the sequencing workflow, not the acquisition or extraction metadata.",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "sample_accession": {
-                                    "type": "string"
-                                },
-                                "data_type": {
-                                    "enum": [
-                                        "pacbio_hifi",
-                                        "longread_pacbio",
-                                        "hic",
-                                        "hic_arima2",
-                                        "hic_cifi",
-                                        "rna_seq",
-                                        "rnaseq",
-                                        "isoseq",
-                                        "isoseq_pacbio",
-                                        "10x_chromium",
-                                        "chromium",
-                                        "ont",
-                                        "bionano",
-                                        "wgs",
-                                        "other"
-                                    ],
-                                    "help": "Type of data represented by this raw-data record."
-                                },
-                                "run_accession": {
-                                    "type": "string"
-                                },
-                                "experiment_accession": {
-                                    "type": "string"
-                                },
-                                "library_name": {
-                                    "type": "string"
-                                },
-                                "library_layout": {
-                                    "type": "string"
-                                },
-                                "library_selection": {
-                                    "type": "string"
-                                },
-                                "library_source": {
-                                    "type": "string"
-                                },
-                                "instrument_model": {
-                                    "type": "string"
-                                },
-                                "submitted_bytes": {
-                                    "type": "number",
-                                    "minimum": 0
-                                },
-                                "read_count": {
-                                    "type": "number",
-                                    "minimum": 0
-                                },
-                                "base_count_gb": {
-                                    "type": "number",
-                                    "minimum": 0
-                                },
-                                "metadata_source": {
-                                    "type": "string"
-                                }
+                    }
+                },
+                "raw_data": {
+                    "type": "array",
+                    "help": "Public data records. This is the data actually produced by the sequencing workflow, not the acquisition or extraction metadata.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sample_accession": {
+                                "type": "string"
+                            },
+                            "data_type": {
+                                "enum": [
+                                    "pacbio_hifi",
+                                    "longread_pacbio",
+                                    "hic",
+                                    "hic_arima2",
+                                    "hic_cifi",
+                                    "rna_seq",
+                                    "rnaseq",
+                                    "isoseq",
+                                    "isoseq_pacbio",
+                                    "10x_chromium",
+                                    "chromium",
+                                    "ont",
+                                    "bionano",
+                                    "wgs",
+                                    "other"
+                                ],
+                                "help": "Type of data represented by this raw-data record."
+                            },
+                            "run_accession": {
+                                "type": "string"
+                            },
+                            "experiment_accession": {
+                                "type": "string"
+                            },
+                            "library_name": {
+                                "type": "string"
+                            },
+                            "library_layout": {
+                                "type": "string"
+                            },
+                            "library_selection": {
+                                "type": "string"
+                            },
+                            "library_source": {
+                                "type": "string"
+                            },
+                            "instrument_model": {
+                                "type": "string"
+                            },
+                            "submitted_bytes": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "read_count": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "base_count_gb": {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "metadata_source": {
+                                "type": "string"
                             }
                         }
-                    },
-                    "cumulative_raw_data_statistics": {
+                    }
+                },
+                "cumulative_raw_data_statistics": {
                         "type": "object",
                         "help": "Cumulative sequencing statistics, normally derived from raw_data records.",
                         "properties": {
@@ -238,7 +239,6 @@
                             }
                         }
                     }
-                }
             }
         }
     }
