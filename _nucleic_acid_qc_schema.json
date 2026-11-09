@@ -1,0 +1,33 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema#",
+    "type": "object",
+    "title": "Nucleic Acid QC Schema",
+    "description": "Reusable Protocol (ANY OF tool/software/workflow/pipeline/protocol) schema",
+    "$defs": {
+        "quality_metrics": {
+            "type": "object",
+            "properties": {
+                "yield_ng": {
+                    "type": "number",
+                },
+                "qubit_ngul": {
+                    "type": "number",
+                    "minimum":0,
+                    "help": ""
+                },
+                "fragment_size_kb": {
+                    "type": "number",
+                    "minimum":0,
+                    "help": ""
+                },
+                "spri_type": {
+                  "type" "string",
+                  "help":""
+                },
+                "volume_ul": {
+                  "type": "number"
+                }
+            }
+        }
+    }
+}
