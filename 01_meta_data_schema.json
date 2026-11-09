@@ -142,11 +142,21 @@
                 "journal_data": {
                     "type": "array",
                     "properties": {
-                        "journal_name": "string",
-                        "e_location_id": "string",
-                        "license": "string",
-                        "submission_date": "string",
-                        "publication_date": "string"
+                        "journal_name": {
+                            "type": "string"
+                        },
+                        "e_location_id": {
+                            "type": "string"
+                        },
+                        "license": {
+                            "type": "string"
+                        },
+                        "submission_date": {
+                            "type": "string"
+                        },
+                        "publication_date": {
+                            "type": "string"
+                        }
                     },
                     "help": "If a genome note already exists for this assembly or set of assemblies in another publication platform/journal, place a link here"
                 },
@@ -155,8 +165,12 @@
                         "type": "string",
                         "help": "Link to an existing genome note, if this is not a v1 genome note"
                     },
-                    "submission_date": "string",
-                    "publication_date": "string"
+                    "submission_date": {
+                        "type": "string"
+                    },
+                    "publication_date": {
+                        "type": "string"
+                    }
                 },
                 "ebp_analysis_metrics": {
                     "type": "array"
