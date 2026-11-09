@@ -74,7 +74,7 @@
                                             "type": "string",
                                             "help": "Display name for the extraction protocol, where separate from extraction_protocol."
                                         },
-                                        "dna_yield_ng": {
+                                        "yield_ng": {
                                             "type": "number",
                                             "minimum": 0
                                         },
