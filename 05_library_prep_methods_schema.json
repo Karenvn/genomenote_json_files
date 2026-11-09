@@ -80,6 +80,12 @@
                                         "library_construction_protocol_plaintext": {
                                             "type": "string",
                                             "help": "Short publication-ready plaintext-summary of the library construction protocol"
+                                        },
+                                        "qc_stats": {
+                                            "type": "object",
+                                            "items": {
+                                                "$ref": "_nucleic_acid_qc_schema.json#/$defs/quality_metrics"
+                                            }
                                         }
                                     }
                                 }

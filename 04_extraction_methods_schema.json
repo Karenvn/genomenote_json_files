@@ -74,18 +74,6 @@
                                             "type": "string",
                                             "help": "Display name for the extraction protocol, where separate from extraction_protocol."
                                         },
-                                        "yield_ng": {
-                                            "type": "number",
-                                            "minimum": 0
-                                        },
-                                        "volume_ul": {
-                                            "type": "number",
-                                            "minimum": 0
-                                        },
-                                        "qubit_ngul": {
-                                            "type": "number",
-                                            "minimum": 0
-                                        },
                                         "ratio_260_280": {
                                             "type": "number"
                                         },
@@ -96,16 +84,9 @@
                                             "type": "number",
                                             "minimum": 0
                                         },
-                                        "fragment_size_kb": {
-                                            "type": "number",
-                                            "minimum": 0
-                                        },
                                         "gqn": {
                                             "type": "number",
                                             "minimum": 0
-                                        },
-                                        "spri_type": {
-                                            "type": "string"
                                         },
                                         "disruption_method": {
                                             "type": "string"
@@ -117,6 +98,12 @@
                                             "type": "number",
                                             "minimum": 0,
                                             "help": "Mass/weight of tissue taken for extraction, in milligrams."
+                                        },
+                                        "qc_stats": {
+                                            "type": "object",
+                                            "items": {
+                                                "$ref": "_nucleic_acid_qc_schema.json#/$defs/quality_metrics"
+                                            }
                                         }
                                     },
                                     "required": [
