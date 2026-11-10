@@ -25,10 +25,6 @@
                         "$ref": "_protocol_schema.json#/$defs/protocol"
                     }
                 },
-                "library_id": {
-                    "type": "string",
-                    "help": "Optional ID for the library record"
-                },
                 "source_extraction": {
                     "type": "array",
                     "help": "Optional list of IDs for the extraction_id used in this library",
@@ -60,6 +56,10 @@
                                 "items": {
                                     "type": "object",
                                     "properties": {
+                                        "library_id": {
+                                            "type": "string",
+                                            "help": "Optional ID for the library record"
+                                        },
                                         "technology": {
                                             "enum": [
                                                 "PacBio HiFi",

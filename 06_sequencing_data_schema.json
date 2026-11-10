@@ -18,10 +18,6 @@
                         "$ref": "_author_schema.json#/$defs/author"
                     }
                 },
-                "library_id": {
-                    "type": "string",
-                    "help": "Optional ID for the library record used for this sequencing run"
-                },
                 "sequencing_protocol": {
                     "type": "array",
                     "help": "Protocols used for the sequencing of the assembly set. Should be listed in the references.",
@@ -108,6 +104,10 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "library_id": {
+                                "type": "string",
+                                "help": "Optional ID for the library record used for this sequencing run"
+                            },
                             "sample_accession": {
                                 "type": "string"
                             },
