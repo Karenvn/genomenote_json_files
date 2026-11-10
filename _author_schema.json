@@ -144,7 +144,6 @@
                 "required": [
                     "surname",
                     "given_names",
-                    "orcid"
                 ],
                 "if": {
                     "properties": {
