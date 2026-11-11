@@ -7,25 +7,32 @@
         "quality_metrics": {
             "type": "object",
             "properties": {
+                "notes": {
+                    "type": "string",
+                    "help": "Notes about the quality metrics"
+                },
                 "yield_ng": {
                     "type": "number",
+                    "minimum": 0,
+                    "help": "Yield of nucleic acid in nanograms"
                 },
                 "qubit_ngul": {
                     "type": "number",
                     "minimum":0,
-                    "help": ""
+                    "help": "Nanogram per microliter"
                 },
                 "fragment_size_kb": {
                     "type": "number",
                     "minimum":0,
-                    "help": ""
+                    "help": "Fragment size in kilobases"
                 },
                 "spri_type": {
-                  "type" "string",
-                  "help":""
+                    "type": "string",
+                    "help": "Type of SPRI used"
                 },
                 "volume_ul": {
-                  "type": "number"
+                    "type": "number",
+                    "help": "Volume in microliters"
                 }
             }
         }
